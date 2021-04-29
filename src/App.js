@@ -3,7 +3,7 @@ import PizzaConstructor from './PizzaConstructor';
 const App = () => {
   return (
     <div className="App">
-      <h3>Pizza</h3>
+      <h1>Best Pizza in Town</h1>
       <PizzaConstructor />
     </div>
   );

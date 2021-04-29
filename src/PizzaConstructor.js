@@ -17,50 +17,51 @@ const PizzaConstructor = () => {
   // Total Order Price
   const totalPrice = calcTotalPrice(order);
 
-  function showOrder(ev) {
-    ev.preventDefault();
-    const orderArr = [].concat(...Object.values(order));
-    setOrderList(orderArr);
+  function showOrder(event) {
+    event.preventDefault();
+    const orderItems = [].concat(...Object.values(order));
+    setOrderList(orderItems);
   }
 
   // Select or de-select items and update state
-  const makeSelect = (ev) => {
-    const value = ev.target.value;
+  const handleSelect = (event) => {
+    const value = event.target.value;
+    const name = event.target.name;
 
-    if (ev.target.name === 'size') {
+    if (name === 'size') {
       setOrder({
         ...order,
         size: parseInt(value),
       });
-    } else if (ev.target.name === 'base') {
+    } else if (name === 'base') {
       setOrder({ ...order, base: value });
-    } else if (ev.target.name === 'sauce') {
+    } else if (name === 'sauce') {
       setOrder({ ...order, sauce: value });
-    } else if (ev.target.name === 'cheese') {
-      if (ev.target.checked) {
+    } else if (name === 'cheese') {
+      if (event.target.checked) {
         setOrder({ ...order, cheese: [...order.cheese, value] });
       } else {
         setOrder({
           ...order,
-          cheese: order.cheese.filter((el) => el !== ev.target.value),
+          cheese: order.cheese.filter((el) => el !== event.target.value),
         });
       }
-    } else if (ev.target.name === 'veg') {
-      if (ev.target.checked) {
+    } else if (name === 'veg') {
+      if (event.target.checked) {
         setOrder({ ...order, veg: [...order.veg, value] });
       } else {
         setOrder({
           ...order,
-          veg: order.veg.filter((el) => el !== ev.target.value),
+          veg: order.veg.filter((el) => el !== event.target.value),
         });
       }
-    } else if (ev.target.name === 'meat') {
-      if (ev.target.checked) {
+    } else if (name === 'meat') {
+      if (event.target.checked) {
         setOrder({ ...order, meat: [...order.meat, value] });
       } else {
         setOrder({
           ...order,
-          meat: order.meat.filter((el) => el !== ev.target.value),
+          meat: order.meat.filter((el) => el !== event.target.value),
         });
       }
     }
@@ -72,10 +73,10 @@ const PizzaConstructor = () => {
 
   return (
     <div style={style}>
-      <h4>Create Your Own Pizza</h4>
+      <h2>Create Your Own Pizza</h2>
       <form onSubmit={showOrder} data-testid="pizza-form">
         <div>
-          <div>
+          <fieldset>
             <label htmlFor="size30" value="30">
               Size 30
             </label>
@@ -86,7 +87,7 @@ const PizzaConstructor = () => {
               id="size30"
               value="30"
               checked={order.size === 30}
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
 
             <label htmlFor="size35" value="35">
@@ -99,11 +100,11 @@ const PizzaConstructor = () => {
               id="size35"
               value="35"
               checked={order.size === 35}
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
-          </div>
-
-          <div>
+          </fieldset>
+          <br />
+          <fieldset>
             <label htmlFor="baseThin" value="thin">
               Thin
             </label>
@@ -114,7 +115,7 @@ const PizzaConstructor = () => {
               id="baseThin"
               value="thin"
               checked={order.base === 'thin'}
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
 
             <label htmlFor="baseThick" value="Thick">
@@ -127,12 +128,12 @@ const PizzaConstructor = () => {
               id="baseThick"
               value="thick"
               checked={order.base === 'thick'}
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
-          </div>
+          </fieldset>
         </div>
         <br />
-        <div>
+        <fieldset>
           <div>
             <label htmlFor="sauceTomato">Tomato Sauce</label>
             <input
@@ -142,7 +143,7 @@ const PizzaConstructor = () => {
               id="sauceTomato"
               value="tomato sauce"
               checked={order.sauce === 'tomato sauce'}
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
             <label htmlFor="sauceWhite">White Sauce</label>
 
@@ -153,7 +154,7 @@ const PizzaConstructor = () => {
               id="sauceWhite"
               value="white sauce"
               checked={order.sauce === 'white sauce'}
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
 
             <label htmlFor="sauceSpicy">Spicy Sauce</label>
@@ -164,12 +165,12 @@ const PizzaConstructor = () => {
               id="sauceSpicy"
               value="spicy sauce"
               checked={order.sauce === 'spicy sauce'}
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
           </div>
-        </div>
+        </fieldset>
         <br />
-        <div>
+        <fieldset>
           <div>
             <label htmlFor="cheeseMozarella">Mozarella</label>
             <input
@@ -178,7 +179,7 @@ const PizzaConstructor = () => {
               name="cheese"
               id="mozarella"
               value="mozarella"
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
 
             <label htmlFor="cheeseCheddar">Cheddar</label>
@@ -188,7 +189,7 @@ const PizzaConstructor = () => {
               name="cheese"
               id="cheddar"
               value="cheddar"
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
 
             <label htmlFor="cheeseDorBlue">Dor Blue</label>
@@ -198,12 +199,12 @@ const PizzaConstructor = () => {
               name="cheese"
               id="dorblue"
               value="dor blue"
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
           </div>
-        </div>
+        </fieldset>
         <br />
-        <div>
+        <fieldset>
           <div>
             <label htmlFor="vegTomato">Tomato</label>
             <input
@@ -212,7 +213,7 @@ const PizzaConstructor = () => {
               name="veg"
               id="tomato"
               value="tomato"
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
 
             <label htmlFor="vegMushroom">Mushroom</label>
@@ -222,7 +223,7 @@ const PizzaConstructor = () => {
               name="veg"
               id="mushroom"
               value="mushroom"
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
 
             <label htmlFor="vegPepper">Pepper</label>
@@ -232,12 +233,12 @@ const PizzaConstructor = () => {
               name="veg"
               id="pepper"
               value="pepper"
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
           </div>
-        </div>
+        </fieldset>
         <br />
-        <div>
+        <fieldset>
           <div>
             <label htmlFor="meatBacon">Bacon</label>
             <input
@@ -246,7 +247,7 @@ const PizzaConstructor = () => {
               name="meat"
               id="bacon"
               value="bacon"
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
 
             <label htmlFor="meatPepperoni">Pepperoni</label>
@@ -256,7 +257,7 @@ const PizzaConstructor = () => {
               name="meat"
               id="pepperoni"
               value="pepperoni"
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
 
             <label htmlFor="meatHam">Ham</label>
@@ -266,10 +267,10 @@ const PizzaConstructor = () => {
               name="meat"
               id="ham"
               value="ham"
-              onChange={makeSelect}
+              onChange={handleSelect}
             />
           </div>
-        </div>
+        </fieldset>
         <br />
 
         <div>
