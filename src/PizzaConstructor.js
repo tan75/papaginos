@@ -1,70 +1,53 @@
-import React, { useState } from 'react';
-import { calcTotalPrice } from './calcTotalPrice';
+import React, { useState, useReducer } from 'react';
+import reducer from './PizzaReducer';
+import { calcTotalPrice } from './utils/calcTotalPrice';
+
+const initialOrderState = {
+  size: 30,
+  base: 'thin',
+  sauce: 'tomato sauce',
+  cheese: [],
+  veg: [],
+  meat: [],
+};
 
 const PizzaConstructor = () => {
-  // Default pizza - thin tomato
-  const [order, setOrder] = useState({
-    size: 30,
-    base: 'thin',
-    sauce: 'tomato sauce',
-    cheese: [],
-    veg: [],
-    meat: [],
-  });
-
+  const [state, dispatch] = useReducer(reducer, initialOrderState);
   const [orderList, setOrderList] = useState([]);
-
-  // Total Order Price
-  const totalPrice = calcTotalPrice(order);
 
   function showOrder(event) {
     event.preventDefault();
-    const orderItems = [].concat(...Object.values(order));
+    const orderItems = [].concat(...Object.values(state));
     setOrderList(orderItems);
   }
 
-  // Select or de-select items and update state
-  const handleSelect = (event) => {
-    const value = event.target.value;
-    const name = event.target.name;
+  const selectPizzaSize = (size) => {
+    if (size === 30) {
+      dispatch({ type: 'SELECT_PIZZA_SIZE_30' });
+    } else if (size === 35) dispatch({ type: 'SELECT_PIZZA_SIZE_35' });
+  };
 
-    if (name === 'size') {
-      setOrder({
-        ...order,
-        size: parseInt(value),
-      });
-    } else if (name === 'base') {
-      setOrder({ ...order, base: value });
-    } else if (name === 'sauce') {
-      setOrder({ ...order, sauce: value });
-    } else if (name === 'cheese') {
-      if (event.target.checked) {
-        setOrder({ ...order, cheese: [...order.cheese, value] });
-      } else {
-        setOrder({
-          ...order,
-          cheese: order.cheese.filter((el) => el !== event.target.value),
-        });
-      }
-    } else if (name === 'veg') {
-      if (event.target.checked) {
-        setOrder({ ...order, veg: [...order.veg, value] });
-      } else {
-        setOrder({
-          ...order,
-          veg: order.veg.filter((el) => el !== event.target.value),
-        });
-      }
-    } else if (name === 'meat') {
-      if (event.target.checked) {
-        setOrder({ ...order, meat: [...order.meat, value] });
-      } else {
-        setOrder({
-          ...order,
-          meat: order.meat.filter((el) => el !== event.target.value),
-        });
-      }
-    }
+  const selectPizzaBase = (base) => {
+    if (base === 'thin') dispatch({ type: 'SELECT_PIZZA_BASE_THIN' });
+    else if (base === 'thick') dispatch({ type: 'SELECT_PIZZA_BASE_THICK' });
+  };
+
+  const selectPizzaSauce = (sauce) => {
+    if (sauce === 'tomato sauce')
+      dispatch({ type: 'SELECT_PIZZA_SAUCE_TOMATO' });
+    else if (sauce === 'white sauce') {
+      dispatch({ type: 'SELECT_PIZZA_SAUCE_WHITE' });
+    } else if (sauce === 'spicy sauce')
+      dispatch({ type: 'SELECT_PIZZA_SAUCE_SPICY' });
+  };
+
+  const selectPizzaCheese = (cheese) => {
+    if (cheese === 'mozarella')
+      dispatch({ type: 'SELECT_PIZZA_CHEESE_MOZARELLA' });
+    else if (cheese === 'cheddar') {
+      dispatch({ type: 'SELECT_PIZZA_CHEESE_CHEDDAR' });
+    } else if (cheese === 'dor blue')
+      dispatch({ type: 'SELECT_PIZZA_CHEESE_DOR_BLUE' });
   };
 
   const style = {
@@ -74,7 +57,7 @@ const PizzaConstructor = () => {
   return (
     <div style={style}>
       <h2>Create Your Own Pizza</h2>
-      <form onSubmit={showOrder} data-testid="pizza-form">
+      <form data-testid="pizza-form" onSubmit={showOrder}>
         <div>
           <fieldset>
             <label htmlFor="size30" value="30">
@@ -86,8 +69,8 @@ const PizzaConstructor = () => {
               name="size"
               id="size30"
               value="30"
-              checked={order.size === 30}
-              onChange={handleSelect}
+              checked={state.size === 30}
+              onChange={() => selectPizzaSize(30)}
             />
 
             <label htmlFor="size35" value="35">
@@ -99,8 +82,8 @@ const PizzaConstructor = () => {
               name="size"
               id="size35"
               value="35"
-              checked={order.size === 35}
-              onChange={handleSelect}
+              checked={state.size === 35}
+              onChange={() => selectPizzaSize(35)}
             />
           </fieldset>
           <br />
@@ -114,8 +97,8 @@ const PizzaConstructor = () => {
               name="base"
               id="baseThin"
               value="thin"
-              checked={order.base === 'thin'}
-              onChange={handleSelect}
+              checked={state.base === 'thin'}
+              onChange={() => selectPizzaBase('thin')}
             />
 
             <label htmlFor="baseThick" value="Thick">
@@ -127,8 +110,8 @@ const PizzaConstructor = () => {
               name="base"
               id="baseThick"
               value="thick"
-              checked={order.base === 'thick'}
-              onChange={handleSelect}
+              checked={state.base === 'thick'}
+              onChange={() => selectPizzaBase('thick')}
             />
           </fieldset>
         </div>
@@ -142,8 +125,8 @@ const PizzaConstructor = () => {
               name="sauce"
               id="sauceTomato"
               value="tomato sauce"
-              checked={order.sauce === 'tomato sauce'}
-              onChange={handleSelect}
+              checked={state.sauce === 'tomato sauce'}
+              onChange={() => selectPizzaSauce('tomato sauce')}
             />
             <label htmlFor="sauceWhite">White Sauce</label>
 
@@ -153,8 +136,8 @@ const PizzaConstructor = () => {
               name="sauce"
               id="sauceWhite"
               value="white sauce"
-              checked={order.sauce === 'white sauce'}
-              onChange={handleSelect}
+              checked={state.sauce === 'white sauce'}
+              onChange={() => selectPizzaSauce('white sauce')}
             />
 
             <label htmlFor="sauceSpicy">Spicy Sauce</label>
@@ -164,8 +147,8 @@ const PizzaConstructor = () => {
               name="sauce"
               id="sauceSpicy"
               value="spicy sauce"
-              checked={order.sauce === 'spicy sauce'}
-              onChange={handleSelect}
+              checked={state.sauce === 'spicy sauce'}
+              onChange={() => selectPizzaSauce('spicy sauce')}
             />
           </div>
         </fieldset>
@@ -179,7 +162,7 @@ const PizzaConstructor = () => {
               name="cheese"
               id="mozarella"
               value="mozarella"
-              onChange={handleSelect}
+              onChange={() => selectPizzaCheese('mozarella')}
             />
 
             <label htmlFor="cheeseCheddar">Cheddar</label>
@@ -189,7 +172,7 @@ const PizzaConstructor = () => {
               name="cheese"
               id="cheddar"
               value="cheddar"
-              onChange={handleSelect}
+              onChange={() => selectPizzaCheese('cheddar')}
             />
 
             <label htmlFor="cheeseDorBlue">Dor Blue</label>
@@ -199,7 +182,7 @@ const PizzaConstructor = () => {
               name="cheese"
               id="dorblue"
               value="dor blue"
-              onChange={handleSelect}
+              onChange={() => selectPizzaCheese('dor blue')}
             />
           </div>
         </fieldset>
@@ -213,7 +196,6 @@ const PizzaConstructor = () => {
               name="veg"
               id="tomato"
               value="tomato"
-              onChange={handleSelect}
             />
 
             <label htmlFor="vegMushroom">Mushroom</label>
@@ -223,7 +205,6 @@ const PizzaConstructor = () => {
               name="veg"
               id="mushroom"
               value="mushroom"
-              onChange={handleSelect}
             />
 
             <label htmlFor="vegPepper">Pepper</label>
@@ -233,7 +214,6 @@ const PizzaConstructor = () => {
               name="veg"
               id="pepper"
               value="pepper"
-              onChange={handleSelect}
             />
           </div>
         </fieldset>
@@ -247,7 +227,6 @@ const PizzaConstructor = () => {
               name="meat"
               id="bacon"
               value="bacon"
-              onChange={handleSelect}
             />
 
             <label htmlFor="meatPepperoni">Pepperoni</label>
@@ -257,7 +236,6 @@ const PizzaConstructor = () => {
               name="meat"
               id="pepperoni"
               value="pepperoni"
-              onChange={handleSelect}
             />
 
             <label htmlFor="meatHam">Ham</label>
@@ -267,7 +245,6 @@ const PizzaConstructor = () => {
               name="meat"
               id="ham"
               value="ham"
-              onChange={handleSelect}
             />
           </div>
         </fieldset>
@@ -276,7 +253,7 @@ const PizzaConstructor = () => {
         <div>
           <p>Your Order:</p>
           <p>{orderList.join(', ')}</p>
-          <p>Total: {totalPrice}</p>
+          <p>Total: total</p>
         </div>
         <button type="submit">Order Now!</button>
       </form>
