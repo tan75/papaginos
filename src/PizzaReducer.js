@@ -22,7 +22,6 @@ export default function reducer(state, action) {
       return { ...state, sauce: 'spicy sauce' };
 
     case 'SELECT_PIZZA_CHEESE_MOZARELLA':
-      console.log(state);
       return { ...state, cheese: [...state.cheese, 'mozarella'] };
 
     case 'SELECT_PIZZA_CHEESE_CHEDDAR':
@@ -32,21 +31,21 @@ export default function reducer(state, action) {
       return { ...state, cheese: [...state.cheese, 'dor blue'] };
 
     case 'SELECT_PIZZA_VEG_TOMATO':
-      return { ...state, veg: 'tomato' };
+      return { ...state, veg: [...state.veg, 'tomato'] };
 
     case 'SELECT_PIZZA_VEG_MUSHROOM':
-      return { ...state, veg: 'mushroom' };
+      return { ...state, veg: [...state.veg, 'mushroom'] };
 
     case 'SELECT_PIZZA_VEG_PEPPER':
-      return { ...state, veg: 'pepper' };
+      return { ...state, veg: [...state.veg, 'pepper'] };
 
     case 'SELECT_PIZZA_MEAT_BACON':
-      return { ...state, meat: 'bacon' };
+      return { ...state, meat: [...state.meat, 'bacon'] };
 
     case 'SELECT_PIZZA_MEAT_PEPPERONI':
-      return { ...state, meat: 'pepperoni' };
+      return { ...state, meat: [...state.meat, 'pepperoni'] };
 
     case 'SELECT_PIZZA_MEAT_HAM':
-      return { ...state, meat: 'ham' };
+      return { ...state, meat: [...state.meat, 'ham'] };
   }
 }
