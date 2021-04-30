@@ -10,10 +10,10 @@ describe('PizzaConstructor', () => {
     expect(container).toContainHTML('Size 30');
     expect(container).toContainHTML('Size 35');
     expect(container).toContainHTML('Thin');
-    expect(getByTestId('baseThin')).toBeChecked();
+    expect(getByLabelText('Thin')).toBeChecked();
     expect(container).toContainHTML('Thick');
     expect(container).toContainHTML('Tomato Sauce');
-    expect(getByTestId('sauceTomato')).toBeChecked();
+    expect(getByLabelText('Tomato Sauce')).toBeChecked();
     expect(container).toContainHTML('White Sauce');
     expect(container).toContainHTML('Spicy Sauce');
     expect(container).toContainHTML('Mozarella');
