@@ -25,46 +25,47 @@ const PizzaConstructor = () => {
   }
 
   const selectPizzaSize = (size) => {
-    if (size === 30) {
-      dispatch({ type: 'SELECT_PIZZA_SIZE_30' });
-    } else if (size === 35) dispatch({ type: 'SELECT_PIZZA_SIZE_35' });
+    size === 30
+      ? dispatch({ type: 'SELECT_PIZZA_SIZE_30' })
+      : dispatch({ type: 'SELECT_PIZZA_SIZE_35' });
   };
 
   const selectPizzaBase = (base) => {
-    if (base === 'thin') dispatch({ type: 'SELECT_PIZZA_BASE_THIN' });
-    else if (base === 'thick') dispatch({ type: 'SELECT_PIZZA_BASE_THICK' });
+    base === 'thin'
+      ? dispatch({ type: 'SELECT_PIZZA_BASE_THIN' })
+      : dispatch({ type: 'SELECT_PIZZA_BASE_THICK' });
   };
 
   const selectPizzaSauce = (sauce) => {
-    if (sauce === 'tomato sauce')
-      dispatch({ type: 'SELECT_PIZZA_SAUCE_TOMATO' });
-    else if (sauce === 'white sauce') {
-      dispatch({ type: 'SELECT_PIZZA_SAUCE_WHITE' });
-    } else if (sauce === 'spicy sauce')
-      dispatch({ type: 'SELECT_PIZZA_SAUCE_SPICY' });
+    sauce === 'tomato sauce'
+      ? dispatch({ type: 'SELECT_PIZZA_SAUCE_TOMATO' })
+      : sauce === 'white sauce'
+      ? dispatch({ type: 'SELECT_PIZZA_SAUCE_WHITE' })
+      : dispatch({ type: 'SELECT_PIZZA_SAUCE_SPICY' });
   };
 
   const selectPizzaCheese = (cheese) => {
-    if (cheese === 'mozarella')
-      dispatch({ type: 'SELECT_PIZZA_CHEESE_MOZARELLA' });
-    else if (cheese === 'cheddar') {
-      dispatch({ type: 'SELECT_PIZZA_CHEESE_CHEDDAR' });
-    } else if (cheese === 'dor blue')
-      dispatch({ type: 'SELECT_PIZZA_CHEESE_DOR_BLUE' });
+    cheese === 'mozarella'
+      ? dispatch({ type: 'SELECT_PIZZA_CHEESE_MOZARELLA' })
+      : cheese === 'cheddar'
+      ? dispatch({ type: 'SELECT_PIZZA_CHEESE_CHEDDAR' })
+      : dispatch({ type: 'SELECT_PIZZA_CHEESE_DOR_BLUE' });
   };
 
   const selectPizzaVeg = (veg) => {
-    if (veg === 'tomato') dispatch({ type: 'SELECT_PIZZA_VEG_TOMATO' });
-    else if (veg === 'mushroom') {
-      dispatch({ type: 'SELECT_PIZZA_VEG_MUSHROOM' });
-    } else if (veg === 'pepper') dispatch({ type: 'SELECT_PIZZA_VEG_PEPPER' });
+    veg === 'tomato'
+      ? dispatch({ type: 'SELECT_PIZZA_VEG_TOMATO' })
+      : veg === 'mushroom'
+      ? dispatch({ type: 'SELECT_PIZZA_VEG_MUSHROOM' })
+      : dispatch({ type: 'SELECT_PIZZA_VEG_PEPPER' });
   };
 
   const selectPizzaMeat = (meat) => {
-    if (meat === 'bacon') dispatch({ type: 'SELECT_PIZZA_MEAT_BACON' });
-    else if (meat === 'pepperoni') {
-      dispatch({ type: 'SELECT_PIZZA_MEAT_PEPPERONI' });
-    } else if (meat === 'ham') dispatch({ type: 'SELECT_PIZZA_MEAT_HAM' });
+    meat === 'bacon'
+      ? dispatch({ type: 'SELECT_PIZZA_MEAT_BACON' })
+      : meat === 'pepperoni'
+      ? dispatch({ type: 'SELECT_PIZZA_MEAT_PEPPERONI' })
+      : dispatch({ type: 'SELECT_PIZZA_MEAT_HAM' });
   };
 
   const style = {
