@@ -68,12 +68,8 @@ const PizzaConstructor = () => {
       : dispatch({ type: 'SELECT_PIZZA_MEAT_HAM' });
   };
 
-  const style = {
-    margin: '1.5em',
-  };
-
   return (
-    <div style={style}>
+    <div>
       <h2>Create Your Own Pizza</h2>
       <form data-testid="pizza-form" onSubmit={showOrder}>
         <div>
