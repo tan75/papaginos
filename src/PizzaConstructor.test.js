@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, getByLabelText, fireEvent } from '@testing-library/react';
 import PizzaConstructor from './PizzaConstructor';
+import reducer from './PizzaReducer';
+import { statements } from '@babel/template';
 
 describe('PizzaConstructor', () => {
   it('renders correctly', () => {
@@ -164,6 +166,78 @@ describe('PizzaConstructor', () => {
       expect(container).toContainHTML(
         '30, thin, tomato sauce, bacon, pepperoni'
       );
+    });
+  });
+
+  describe('test reducers', () => {
+    it('updates pizza size correctly', () => {
+      const newState = reducer({}, { type: 'SELECT_PIZZA_SIZE_30' });
+      expect(newState.size).toBe(30);
+    });
+
+    it('updates pizza size correctly', () => {
+      const newState = reducer({}, { type: 'SELECT_PIZZA_SIZE_35' });
+      expect(newState.size).toBe(35);
+    });
+
+    it('updates pizza base correctly', () => {
+      const newState = reducer({}, { type: 'SELECT_PIZZA_BASE_THIN' });
+      expect(newState.base).toBe('thin');
+    });
+
+    it('updates pizza base correctly', () => {
+      const newState = reducer({}, { type: 'SELECT_PIZZA_BASE_THICK' });
+      expect(newState.base).toBe('thick');
+    });
+
+    it('updates pizza sauce correctly', () => {
+      const newState = reducer({}, { type: 'SELECT_PIZZA_SAUCE_TOMATO' });
+      expect(newState.sauce).toBe('tomato');
+    });
+
+    it('updates pizza cheese selection correctly', () => {
+      const newState = reducer(
+        {
+          size: 30,
+          base: 'thin',
+          sauce: 'tomato sauce',
+          cheese: ['dor blue'],
+          veg: [],
+          meat: [],
+        },
+        { type: 'SELECT_PIZZA_CHEESE_MOZARELLA' }
+      );
+      expect(newState.cheese).toStrictEqual(['dor blue', 'mozarella']);
+    });
+
+    it('updates pizza veg selection correctly', () => {
+      const newState = reducer(
+        {
+          size: 30,
+          base: 'thin',
+          sauce: 'tomato sauce',
+          cheese: [],
+          veg: ['tomato', 'mushroom'],
+          meat: [],
+        },
+        { type: 'SELECT_PIZZA_VEG_PEPPER' }
+      );
+      expect(newState.veg).toStrictEqual(['tomato', 'mushroom', 'pepper']);
+    });
+
+    it('updates pizza meat selection correctly', () => {
+      const newState = reducer(
+        {
+          size: 30,
+          base: 'thin',
+          sauce: 'tomato sauce',
+          cheese: [],
+          veg: [],
+          meat: ['bacon'],
+        },
+        { type: 'SELECT_PIZZA_MEAT_PEPPERONI' }
+      );
+      expect(newState.meat).toStrictEqual(['bacon', 'pepperoni']);
     });
   });
 });
