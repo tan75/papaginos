@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from 'react';
-import reducer from './PizzaReducer';
-import { calcTotalPrice } from './utils/calcTotalPrice';
+import reducer from '../PizzaReducer';
+import { calcTotalPrice } from '../utils/calcTotalPrice';
 
 const initialOrderState = {
   size: 30,
@@ -11,7 +11,7 @@ const initialOrderState = {
   meat: [],
 };
 
-const PizzaConstructor = () => {
+const PizzaComponent = () => {
   const [state, dispatch] = useReducer(reducer, initialOrderState);
   const [orderList, setOrderList] = useState([]);
 
@@ -281,4 +281,4 @@ const PizzaConstructor = () => {
   );
 };
 
-export default PizzaConstructor;
+export default PizzaComponent;

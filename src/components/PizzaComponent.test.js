@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, getByLabelText, fireEvent } from '@testing-library/react';
-import PizzaConstructor from './PizzaConstructor';
-import reducer from './PizzaReducer';
+import PizzaComponent from './PizzaComponent';
+import reducer from '../PizzaReducer';
 import { statements } from '@babel/template';
 
-describe('PizzaConstructor', () => {
+describe('PizzaComponent', () => {
   it('renders correctly', () => {
     const { container, getByTestId, getByLabelText } = render(
-      <PizzaConstructor />
+      <PizzaComponent />
     );
     expect(container).toContainHTML('Size 30');
     expect(container).toContainHTML('Size 35');
@@ -32,7 +32,7 @@ describe('PizzaConstructor', () => {
 
   describe('on pizza size change', () => {
     it('updates pizza size radio button state', () => {
-      const { getByTestId } = render(<PizzaConstructor />);
+      const { getByTestId } = render(<PizzaComponent />);
       expect(getByTestId('size30')).toBeChecked();
 
       fireEvent.click(getByTestId('size35'));
@@ -40,7 +40,7 @@ describe('PizzaConstructor', () => {
       expect(getByTestId('size35')).toBeChecked();
     });
     it('updates price correctly', () => {
-      const { container, getByTestId } = render(<PizzaConstructor />);
+      const { container, getByTestId } = render(<PizzaComponent />);
 
       fireEvent.click(getByTestId('size35'));
       expect(container).toContainHTML('Total: 250');
@@ -49,7 +49,7 @@ describe('PizzaConstructor', () => {
 
   describe('on pizza base change', () => {
     it('updates pizza base radio button state', () => {
-      const { getByTestId } = render(<PizzaConstructor />);
+      const { getByTestId } = render(<PizzaComponent />);
       expect(getByTestId('baseThin')).toBeChecked();
 
       fireEvent.click(getByTestId('baseThick'));
@@ -57,7 +57,7 @@ describe('PizzaConstructor', () => {
       expect(getByTestId('baseThick')).toBeChecked();
     });
     it('it does not change the price', () => {
-      const { container, getByTestId } = render(<PizzaConstructor />);
+      const { container, getByTestId } = render(<PizzaComponent />);
 
       fireEvent.click(getByTestId('baseThick'));
       expect(container).toContainHTML('Total: 200');
@@ -66,7 +66,7 @@ describe('PizzaConstructor', () => {
 
   describe('on pizza sauce change', () => {
     it('updates pizza sauce radio button state', () => {
-      const { getByTestId } = render(<PizzaConstructor />);
+      const { getByTestId } = render(<PizzaComponent />);
       expect(getByTestId('sauceTomato')).toBeChecked();
 
       fireEvent.click(getByTestId('sauceWhite'));
@@ -81,7 +81,7 @@ describe('PizzaConstructor', () => {
       expect(getByTestId('sauceSpicy')).toBeChecked();
     });
     it('does not change the price', () => {
-      const { container, getByTestId } = render(<PizzaConstructor />);
+      const { container, getByTestId } = render(<PizzaComponent />);
 
       fireEvent.click(getByTestId('sauceWhite'));
       expect(container).toContainHTML('Total: 200');
@@ -90,7 +90,7 @@ describe('PizzaConstructor', () => {
 
   describe('on pizza cheese change', () => {
     it('updates pizza cheese checkboxes state', () => {
-      const { getByTestId } = render(<PizzaConstructor />);
+      const { getByTestId } = render(<PizzaComponent />);
       expect(getByTestId('cheeseMozarella')).not.toBeChecked();
       expect(getByTestId('cheeseCheddar')).not.toBeChecked();
       expect(getByTestId('cheeseDorBlue')).not.toBeChecked();
@@ -103,7 +103,7 @@ describe('PizzaConstructor', () => {
     });
 
     it('updates price correctly', () => {
-      const { container, getByTestId } = render(<PizzaConstructor />);
+      const { container, getByTestId } = render(<PizzaComponent />);
 
       fireEvent.click(getByTestId('cheeseMozarella'));
       fireEvent.click(getByTestId('cheeseCheddar'));
@@ -113,7 +113,7 @@ describe('PizzaConstructor', () => {
 
   describe('on pizza veg change', () => {
     it('updates pizza veg checkboxes state', () => {
-      const { getByTestId } = render(<PizzaConstructor />);
+      const { getByTestId } = render(<PizzaComponent />);
       expect(getByTestId('vegTomato')).not.toBeChecked();
       expect(getByTestId('vegMushroom')).not.toBeChecked();
       expect(getByTestId('vegPepper')).not.toBeChecked();
@@ -125,7 +125,7 @@ describe('PizzaConstructor', () => {
       expect(getByTestId('vegPepper')).not.toBeChecked();
     });
     it('updates price correctly', () => {
-      const { container, getByTestId } = render(<PizzaConstructor />);
+      const { container, getByTestId } = render(<PizzaComponent />);
 
       fireEvent.click(getByTestId('vegTomato'));
       fireEvent.click(getByTestId('vegMushroom'));
@@ -135,7 +135,7 @@ describe('PizzaConstructor', () => {
 
   describe('on pizza meat change', () => {
     it('updates pizza meat checkboxes state', () => {
-      const { getByTestId } = render(<PizzaConstructor />);
+      const { getByTestId } = render(<PizzaComponent />);
       expect(getByTestId('meatBacon')).not.toBeChecked();
       expect(getByTestId('meatPepperoni')).not.toBeChecked();
       expect(getByTestId('meatHam')).not.toBeChecked();
@@ -147,7 +147,7 @@ describe('PizzaConstructor', () => {
       expect(getByTestId('meatHam')).not.toBeChecked();
     });
     it('updates price correctly', () => {
-      const { container, getByTestId } = render(<PizzaConstructor />);
+      const { container, getByTestId } = render(<PizzaComponent />);
 
       fireEvent.click(getByTestId('meatBacon'));
       fireEvent.click(getByTestId('meatPepperoni'));
@@ -157,9 +157,7 @@ describe('PizzaConstructor', () => {
 
   describe('on submit', () => {
     it('renders the selected ingredients list', () => {
-      const { container, getByTestId, getByRole } = render(
-        <PizzaConstructor />
-      );
+      const { container, getByTestId, getByRole } = render(<PizzaComponent />);
       fireEvent.click(getByTestId('meatBacon'));
       fireEvent.click(getByTestId('meatPepperoni'));
       fireEvent.click(getByRole('button'));
