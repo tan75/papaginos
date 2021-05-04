@@ -27,7 +27,7 @@ jobs:
       - run: npm install -g yarn
       - name: yarn add; build and test
         run: |
-          yarn add
+          yarn
           yarn build
           yarn test
 
