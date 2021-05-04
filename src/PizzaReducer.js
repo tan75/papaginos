@@ -47,5 +47,8 @@ export default function reducer(state, action) {
 
     case 'SELECT_PIZZA_MEAT_HAM':
       return { ...state, meat: [...state.meat, 'ham'] };
+
+    default:
+      return;
   }
 }
