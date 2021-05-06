@@ -52,6 +52,14 @@ const PizzaComponent = () => {
       : dispatch({ type: 'SELECT_PIZZA_CHEESE_DOR_BLUE' });
   };
 
+  const deselectPizzaCheese = (cheese) => {
+    cheese === 'mozarella'
+      ? dispatch({ type: 'DESELECT_PIZZA_CHEESE_MOZARELLA' })
+      : cheese === 'cheddar'
+      ? dispatch({ type: 'DESELECT_PIZZA_CHEESE_CHEDDAR' })
+      : dispatch({ type: 'DESELECT_PIZZA_CHEESE_DOR_BLUE' });
+  };
+
   const selectPizzaVeg = (veg) => {
     veg === 'tomato'
       ? dispatch({ type: 'SELECT_PIZZA_VEG_TOMATO' })
@@ -60,12 +68,28 @@ const PizzaComponent = () => {
       : dispatch({ type: 'SELECT_PIZZA_VEG_PEPPER' });
   };
 
+  const deselectPizzaVeg = (veg) => {
+    veg === 'tomato'
+      ? dispatch({ type: 'DESELECT_PIZZA_VEG_TOMATO' })
+      : veg === 'mushroom'
+      ? dispatch({ type: 'DESELECT_PIZZA_VEG_MUSHROOM' })
+      : dispatch({ type: 'DESELECT_PIZZA_VEG_PEPPER' });
+  };
+
   const selectPizzaMeat = (meat) => {
     meat === 'bacon'
       ? dispatch({ type: 'SELECT_PIZZA_MEAT_BACON' })
       : meat === 'pepperoni'
       ? dispatch({ type: 'SELECT_PIZZA_MEAT_PEPPERONI' })
       : dispatch({ type: 'SELECT_PIZZA_MEAT_HAM' });
+  };
+
+  const deselectPizzaMeat = (meat) => {
+    meat === 'bacon'
+      ? dispatch({ type: 'DESELECT_PIZZA_MEAT_BACON' })
+      : meat === 'pepperoni'
+      ? dispatch({ type: 'DESELECT_PIZZA_MEAT_PEPPERONI' })
+      : dispatch({ type: 'DESELECT_PIZZA_MEAT_HAM' });
   };
 
   return (
@@ -176,7 +200,10 @@ const PizzaComponent = () => {
               name="cheese"
               id="mozarella"
               value="mozarella"
-              onChange={() => selectPizzaCheese('mozarella')}
+              onChange={(event) => {
+                if (!event.target.checked) deselectPizzaCheese('mozarella');
+                else selectPizzaCheese('mozarella');
+              }}
             />
 
             <label htmlFor="cheeseCheddar">Cheddar</label>
@@ -186,7 +213,10 @@ const PizzaComponent = () => {
               name="cheese"
               id="cheddar"
               value="cheddar"
-              onChange={() => selectPizzaCheese('cheddar')}
+              onChange={(event) => {
+                if (!event.target.checked) deselectPizzaCheese('cheddar');
+                else selectPizzaCheese('cheddar');
+              }}
             />
 
             <label htmlFor="cheeseDorBlue">Dor Blue</label>
@@ -196,7 +226,10 @@ const PizzaComponent = () => {
               name="cheese"
               id="dorblue"
               value="dor blue"
-              onChange={() => selectPizzaCheese('dor blue')}
+              onChange={(event) => {
+                if (!event.target.checked) deselectPizzaCheese('dor blue');
+                else selectPizzaCheese('dor blue');
+              }}
             />
           </div>
         </fieldset>
@@ -210,7 +243,10 @@ const PizzaComponent = () => {
               name="veg"
               id="tomato"
               value="tomato"
-              onChange={() => selectPizzaVeg('tomato')}
+              onChange={(event) => {
+                if (!event.target.checked) deselectPizzaVeg('tomato');
+                else selectPizzaVeg('tomato');
+              }}
             />
 
             <label htmlFor="vegMushroom">Mushroom</label>
@@ -220,7 +256,10 @@ const PizzaComponent = () => {
               name="veg"
               id="mushroom"
               value="mushroom"
-              onChange={() => selectPizzaVeg('mushroom')}
+              onChange={(event) => {
+                if (!event.target.checked) deselectPizzaVeg('mushroom');
+                else selectPizzaVeg('mushroom');
+              }}
             />
 
             <label htmlFor="vegPepper">Pepper</label>
@@ -230,7 +269,10 @@ const PizzaComponent = () => {
               name="veg"
               id="pepper"
               value="pepper"
-              onChange={() => selectPizzaVeg('pepper')}
+              onChange={(event) => {
+                if (!event.target.checked) deselectPizzaVeg('pepper');
+                else selectPizzaVeg('pepper');
+              }}
             />
           </div>
         </fieldset>
@@ -244,7 +286,10 @@ const PizzaComponent = () => {
               name="meat"
               id="bacon"
               value="bacon"
-              onChange={() => selectPizzaMeat('bacon')}
+              onChange={(event) => {
+                if (!event.target.checked) deselectPizzaMeat('bacon');
+                else selectPizzaMeat('bacon');
+              }}
             />
 
             <label htmlFor="meatPepperoni">Pepperoni</label>
@@ -254,7 +299,10 @@ const PizzaComponent = () => {
               name="meat"
               id="pepperoni"
               value="pepperoni"
-              onChange={() => selectPizzaMeat('pepperoni')}
+              onChange={(event) => {
+                if (!event.target.checked) deselectPizzaMeat('pepperoni');
+                else selectPizzaMeat('pepperoni');
+              }}
             />
 
             <label htmlFor="meatHam">Ham</label>
@@ -264,7 +312,10 @@ const PizzaComponent = () => {
               name="meat"
               id="ham"
               value="ham"
-              onChange={() => selectPizzaMeat('ham')}
+              onChange={(event) => {
+                if (!event.target.checked) deselectPizzaMeat('ham');
+                else selectPizzaMeat('ham');
+              }}
             />
           </div>
         </fieldset>
