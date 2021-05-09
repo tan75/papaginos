@@ -12,7 +12,6 @@ const App = () => {
       >
         Break the world
       </button>
-      ;
     </div>
   );
 };
