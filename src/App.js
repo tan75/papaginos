@@ -6,7 +6,14 @@ const App = () => {
       <h1>Best Pizza in Town</h1>
       <h2>Staging</h2>
       <PizzaComponent />
-      <button onClick={methodDoesNotExist}>Break the world</button>;
+      <button
+        onClick={() => {
+          throw new Error('Something went wrong');
+        }}
+      >
+        Break the world
+      </button>
+      ;
     </div>
   );
 };
