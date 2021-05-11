@@ -23,10 +23,19 @@ jobs:
       - run: npm install -g yarn
       - name: yarn install; build and test
         run: |
-          yarn 
+          yarn
           yarn build
           yarn test
 
+      - name: Create Sentry Release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.PAPAGINOS_PROJECT }}
+        with:
+          environment: production
+          sourcemaps: ./build
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         env:
