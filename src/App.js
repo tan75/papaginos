@@ -1,6 +1,6 @@
 import PizzaComponent from './pizzaComponents/PizzaComponent';
 import SignInPage from './accessComponents/SignInPage';
-import SignOnPage from './accessComponents/SignOnPage';
+import SignUpPage from './accessComponents/SignUpPage';
 import ErrorPage from './ErrorPage';
 
 import { Switch, Route, Link } from 'react-router-dom';
@@ -16,7 +16,7 @@ const App = () => {
           <Link to="/signin">Sign In</Link>
         </p>
         <p>
-          <Link to="/signon">Sign On</Link>
+          <Link to="/signup">Sign Up</Link>
         </p>
       </nav>
       <h1>Best Pizza in Town</h1>
@@ -24,8 +24,8 @@ const App = () => {
         <Route path="/signin">
           <SignInPage />
         </Route>
-        <Route path="/signon">
-          <SignOnPage />
+        <Route path="/signup">
+          <SignUpPage />
         </Route>
         <Route exact path="/">
           <PizzaComponent />

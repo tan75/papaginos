@@ -1,11 +1,11 @@
 import React from 'react';
 
-const signOn = () => {
+const signUp = () => {
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        console.log('Signing On...');
+        console.log('Signing Up...');
       }}
     >
       <p>Please register with Papa Gino's</p>
@@ -21,9 +21,9 @@ const signOn = () => {
       <br />
       <input type="text" />
       <br />
-      <button type="submit">Sign On</button>
+      <button type="submit">Sign Up</button>
     </form>
   );
 };
 
-export default signOn;
+export default signUp;
