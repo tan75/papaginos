@@ -1,6 +1,5 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { screen } from '@testing-library/dom';
 import SignUpPage from './SignUpPage';
 
 describe('Sign Up Page', () => {

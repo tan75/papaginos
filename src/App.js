@@ -1,10 +1,10 @@
 import PizzaComponent from './pizzaComponents/PizzaComponent';
-import SignInPage from './accessComponents/SignInPage';
-import SignUpPage from './accessComponents/SignUpPage';
+import SignInPage from './access/SignInPage';
+import SignUpPage from './access/SignUpPage';
 import ErrorPage from './ErrorPage';
-import OrderPage from './orderComponents/OrderPage';
-import ReceiptPage from './orderComponents/ReceiptPage';
-import OrdersPage from './orderComponents/OrdersPage';
+import OrderPage from './order/OrderPage';
+import ReceiptPage from './order/ReceiptPage';
+import OrdersPage from './order/OrdersPage';
 
 import { Switch, Route, Link } from 'react-router-dom';
 
