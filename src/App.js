@@ -2,6 +2,7 @@ import PizzaComponent from './pizzaComponents/PizzaComponent';
 import SignInPage from './accessComponents/SignInPage';
 import SignUpPage from './accessComponents/SignUpPage';
 import ErrorPage from './ErrorPage';
+import OrderPage from './orderComponents/OrderPage';
 
 import { Switch, Route, Link } from 'react-router-dom';
 
@@ -21,6 +22,9 @@ const App = () => {
       </nav>
       <h1>Best Pizza in Town</h1>
       <Switch>
+        <Route path="/order">
+          <OrderPage />
+        </Route>
         <Route path="/signin">
           <SignInPage />
         </Route>
