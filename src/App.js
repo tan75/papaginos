@@ -6,7 +6,7 @@ import ErrorPage from './ErrorPage';
 import OrderPage from './order/OrderPage';
 import ReceiptPage from './order/ReceiptPage';
 import OrdersPage from './order/OrdersPage';
-import PrivateRoutes from './access/PrivateRoutes';
+import PrivateRoute from './access/PrivateRoute';
 
 import { Switch, Route, Link } from 'react-router-dom';
 
@@ -32,9 +32,9 @@ const App = () => {
         <Route path="/receipt">
           <ReceiptPage />
         </Route>
-        <PrivateRoutes path="/order" redirectPath="/signin">
+        <PrivateRoute path="/order" redirectPath="/signin">
           <OrderPage />
-        </PrivateRoutes>
+        </PrivateRoute>
         <Route path="/orders">
           <OrdersPage />
         </Route>
