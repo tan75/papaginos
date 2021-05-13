@@ -14,24 +14,26 @@ const App = () => {
   return (
     <div className="App">
       <nav>
-        <p>
-          <Link to="/">Papa Ginos</Link>
-        </p>
-        <p>
-          <Link to="/signin">Sign In</Link>
-        </p>
-        <p>
-          <Link to="/signup">Sign Up</Link>
-        </p>
-        <p>
-          <Link to="/order">Order</Link>
-        </p>
-        <p>
-          <Link to="/orders">Orders</Link>
-        </p>
-        <p>
-          <Link to="/receipt">Receipt</Link>
-        </p>
+        <ul>
+          <li>
+            <Link to="/">Papa Ginos</Link>
+          </li>
+          <li>
+            <Link to="/signin">Sign In</Link>
+          </li>
+          <li>
+            <Link to="/signup">Sign Up</Link>
+          </li>
+          <li>
+            <Link to="/order">Order</Link>
+          </li>
+          <li>
+            <Link to="/orders">Orders</Link>
+          </li>
+          <li>
+            <Link to="/receipt">Receipt</Link>
+          </li>
+        </ul>
       </nav>
       <h1>Best Pizza in Town</h1>
       <Switch>
