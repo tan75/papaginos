@@ -26,18 +26,24 @@ const App = () => {
         <p>
           <Link to="/order">Order</Link>
         </p>
+        <p>
+          <Link to="/orders">Orders</Link>
+        </p>
+        <p>
+          <Link to="/receipt">Receipt</Link>
+        </p>
       </nav>
       <h1>Best Pizza in Town</h1>
       <Switch>
-        <Route path="/receipt">
+        <PrivateRoute path="/receipt" redirectPath="/signin">
           <ReceiptPage />
-        </Route>
+        </PrivateRoute>
         <PrivateRoute path="/order" redirectPath="/signin">
           <OrderPage />
         </PrivateRoute>
-        <Route path="/orders">
+        <PrivateRoute path="/orders" redirectPath="/signin">
           <OrdersPage />
-        </Route>
+        </PrivateRoute>
         <Route path="/signin">
           <SignInPage />
         </Route>
