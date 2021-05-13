@@ -3,7 +3,6 @@ import { useAuth } from '../access/AuthContext';
 
 const OrderPage = () => {
   const { signOut } = useAuth();
-  console.log(111, signOut);
   return (
     <div>
       <h2>Your Order</h2>
