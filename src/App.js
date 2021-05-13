@@ -3,6 +3,7 @@ import SignInPage from './accessComponents/SignInPage';
 import SignUpPage from './accessComponents/SignUpPage';
 import ErrorPage from './ErrorPage';
 import OrderPage from './orderComponents/OrderPage';
+import ReceiptPage from './orderComponents/ReceiptPage';
 
 import { Switch, Route, Link } from 'react-router-dom';
 
@@ -22,6 +23,9 @@ const App = () => {
       </nav>
       <h1>Best Pizza in Town</h1>
       <Switch>
+        <Route path="/receipt">
+          <ReceiptPage />
+        </Route>
         <Route path="/order">
           <OrderPage />
         </Route>
