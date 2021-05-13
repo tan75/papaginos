@@ -4,6 +4,7 @@ import SignUpPage from './accessComponents/SignUpPage';
 import ErrorPage from './ErrorPage';
 import OrderPage from './orderComponents/OrderPage';
 import ReceiptPage from './orderComponents/ReceiptPage';
+import OrdersPage from './orderComponents/OrdersPage';
 
 import { Switch, Route, Link } from 'react-router-dom';
 
@@ -28,6 +29,9 @@ const App = () => {
         </Route>
         <Route path="/order">
           <OrderPage />
+        </Route>
+        <Route path="/orders">
+          <OrdersPage />
         </Route>
         <Route path="/signin">
           <SignInPage />
