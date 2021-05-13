@@ -3,9 +3,9 @@ import { render } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import SignUpPage from './SignUpPage';
 
-describe('Sign In Page', () => {
+describe('Sign Up Page', () => {
   it('renders correctly', () => {
     const { container } = render(<SignUpPage />);
-    //expect(container).toContainHTML('Please enter your credentials to sign in');
+    expect(container).toContainHTML('Please register with Papa Ginos');
   });
 });

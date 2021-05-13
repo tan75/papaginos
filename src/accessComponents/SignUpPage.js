@@ -8,7 +8,7 @@ const signUp = () => {
         console.log('Signing Up...');
       }}
     >
-      <p>Please register with Papa Gino's</p>
+      <p>Please register with Papa Ginos</p>
       <label htmlFor="userEmail">Your email</label>
       <br />
       <input type="email" />
