@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PizzaCheeseItem = ({ state, selectPizzaCheese, deselectPizzaCheese }) => {
+const PizzaCheeseItem = ({ selectPizzaCheese, deselectPizzaCheese }) => {
   return (
     <fieldset>
       <div>

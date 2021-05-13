@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../access/AuthContext';
 
 const SignInPage = () => {
-  const { authed, signIn } = useAuth();
+  const { signIn } = useAuth();
   return (
     <div>
       <button onClick={signIn}>Sign In</button>

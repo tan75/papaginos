@@ -1,3 +1,4 @@
+import React from 'react';
 import PizzaComponent from './pizzaComponents/PizzaComponent';
 import SignInPage from './access/SignInPage';
 import SignUpPage from './access/SignUpPage';
@@ -14,7 +15,7 @@ const App = () => {
     <div className="App">
       <nav>
         <p>
-          <Link to="/">Papa Gino's</Link>
+          <Link to="/">Papa Ginos</Link>
         </p>
         <p>
           <Link to="/signin">Sign In</Link>
