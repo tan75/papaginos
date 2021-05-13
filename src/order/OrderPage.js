@@ -1,10 +1,14 @@
 import React from 'react';
+import { useAuth } from '../access/AuthContext';
 
-function orderPage() {
+const OrderPage = () => {
+  const { signOut } = useAuth();
+  console.log(111, signOut);
   return (
     <div>
       <h2>Your Order</h2>
       <h3>Please enter your details to place your order</h3>
+      <button onClick={signOut}>Sign Out</button>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -31,6 +35,6 @@ function orderPage() {
       </form>
     </div>
   );
-}
+};
 
-export default orderPage;
+export default OrderPage;

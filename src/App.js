@@ -5,6 +5,7 @@ import ErrorPage from './ErrorPage';
 import OrderPage from './order/OrderPage';
 import ReceiptPage from './order/ReceiptPage';
 import OrdersPage from './order/OrdersPage';
+import PrivateRoutes from './access/PrivateRoutes';
 
 import { Switch, Route, Link } from 'react-router-dom';
 
@@ -21,15 +22,18 @@ const App = () => {
         <p>
           <Link to="/signup">Sign Up</Link>
         </p>
+        <p>
+          <Link to="/order">Order</Link>
+        </p>
       </nav>
       <h1>Best Pizza in Town</h1>
       <Switch>
         <Route path="/receipt">
           <ReceiptPage />
         </Route>
-        <Route path="/order">
+        <PrivateRoutes path="/order" redirectPath="/signin">
           <OrderPage />
-        </Route>
+        </PrivateRoutes>
         <Route path="/orders">
           <OrdersPage />
         </Route>
