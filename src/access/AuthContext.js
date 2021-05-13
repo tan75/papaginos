@@ -6,7 +6,6 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [authed, setAuthed] = useState(false);
   const signIn = () => {
-    console.log('Signing in...');
     setAuthed(true);
   };
   const signOut = () => {
