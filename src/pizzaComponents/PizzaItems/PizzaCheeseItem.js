@@ -9,7 +9,7 @@ const PizzaCheeseItem = ({ selectPizzaCheese, deselectPizzaCheese }) => {
           data-testid="cheeseMozarella"
           type="checkbox"
           name="cheese"
-          id="mozarella"
+          id="cheeseMozarella"
           value="mozarella"
           onChange={(event) => {
             if (!event.target.checked) deselectPizzaCheese('mozarella');
@@ -22,7 +22,7 @@ const PizzaCheeseItem = ({ selectPizzaCheese, deselectPizzaCheese }) => {
           data-testid="cheeseCheddar"
           type="checkbox"
           name="cheese"
-          id="cheddar"
+          id="cheeseCheddar"
           value="cheddar"
           onChange={(event) => {
             if (!event.target.checked) deselectPizzaCheese('cheddar');
@@ -35,7 +35,7 @@ const PizzaCheeseItem = ({ selectPizzaCheese, deselectPizzaCheese }) => {
           data-testid="cheeseDorBlue"
           type="checkbox"
           name="cheese"
-          id="dorblue"
+          id="cheeseDorBlue"
           value="dor blue"
           onChange={(event) => {
             if (!event.target.checked) deselectPizzaCheese('dor blue');
