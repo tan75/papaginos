@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from 'react';
 import { reducer } from '../PizzaReducer';
 import { calcTotalPrice } from '../utils/calcTotalPrice';
+import PizzaComponents from './PizzaComponents';
 
 const initialOrderState = {
   size: '30',
@@ -36,60 +37,7 @@ const PizzaConstructor = () => {
     <div className="App">
       <form data-testid="pizza-form" onSubmit={showOrder}>
         <div>
-          <fieldset>
-            <div>
-              <label htmlFor="size30">
-                <input
-                  id="size30"
-                  type="radio"
-                  name="size"
-                  value="30"
-                  checked={state?.size === '30'}
-                  onChange={(e) => handleChange(e)}
-                />
-                Size 30
-              </label>
-              <label htmlFor="size35">
-                <input
-                  id="size35"
-                  type="radio"
-                  name="size"
-                  value="35"
-                  checked={state?.size === '35'}
-                  onChange={(e) => handleChange(e)}
-                />
-                Size 35
-              </label>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <div>
-              <label htmlFor="baseThin">
-                <input
-                  id="baseThin"
-                  type="radio"
-                  name="base"
-                  value="thin"
-                  checked={state?.base === 'thin'}
-                  onChange={(e) => handleChange(e)}
-                />
-                Thin base
-              </label>
-              <label htmlFor="baseThick">
-                <input
-                  id="baseThick"
-                  type="radio"
-                  name="base"
-                  value="thick"
-                  checked={state?.base === 'thick'}
-                  onChange={(e) => handleChange(e)}
-                />
-                Thick base
-              </label>
-            </div>
-          </fieldset>
-
+          <PizzaComponents state={state} handleChange={handleChange} />
           <fieldset>
             <div>
               <label htmlFor="sauceTomato">
