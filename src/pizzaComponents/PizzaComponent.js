@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PizzaBaseComponent = ({
+const PizzaComponent = ({
   htmlFor,
   id,
   type,
@@ -27,4 +27,4 @@ const PizzaBaseComponent = ({
   );
 };
 
-export default PizzaBaseComponent;
+export default PizzaComponent;
