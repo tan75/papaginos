@@ -1,3 +1,3 @@
-# Papa Artem Pizza Restaurant App
+# Artem Pizza Restaurant App
 
 Welcome!
