@@ -5,6 +5,6 @@ import SignUpPage from './SignUpPage';
 describe('Sign Up Page', () => {
   it('renders correctly', () => {
     const { container } = render(<SignUpPage />);
-    expect(container).toContainHTML('Please register with Papa Ginos');
+    expect(container).toContainHTML('Please register with Artem Pizza');
   });
 });

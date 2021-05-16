@@ -1,5 +1,5 @@
 import React from 'react';
-import PizzaComponent from './pizzaComponents/PizzaComponent';
+import PizzaConstructor from './pizzaComponents/PizzaConstructor';
 import SignInPage from './access/SignInPage';
 import SignUpPage from './access/SignUpPage';
 import ErrorPage from './ErrorPage';
@@ -16,7 +16,7 @@ const App = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/">Papa Ginos</Link>
+            <Link to="/">Artem Pizza</Link>
           </li>
           <li>
             <Link to="/signin">Sign In</Link>
@@ -35,7 +35,7 @@ const App = () => {
           </li>
         </ul>
       </nav>
-      <h1>Best Pizza in Town</h1>
+      <h1>Artem Pizza</h1>
       <Switch>
         <PrivateRoute path="/receipt" redirectPath="/signin">
           <ReceiptPage />
@@ -53,7 +53,7 @@ const App = () => {
           <SignUpPage />
         </Route>
         <Route exact path="/">
-          <PizzaComponent />
+          <PizzaConstructor />
         </Route>
         <Route>
           <ErrorPage />

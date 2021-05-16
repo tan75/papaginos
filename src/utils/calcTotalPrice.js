@@ -6,9 +6,7 @@ const priceList = {
 
 export const calcTotalPrice = (ord) => {
   let totPrice = priceList.basePrice;
-  if (ord.size === 35) {
-    totPrice += priceList.largeSizeInc;
-  }
+  ord.size === '35' && (totPrice += priceList.largeSizeInc);
 
   // Price for extras
   const extrPrice =

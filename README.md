@@ -1,3 +1,3 @@
-# Papa Ginos Pizza Restaurant App
+# Papa Artem Pizza Restaurant App
 
-Welcome to Papa Gino's Pizzeria
+Welcome!
