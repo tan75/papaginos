@@ -1,11 +1,21 @@
 import React from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { useAuth } from '../access/AuthContext';
 
 const SignInPage = () => {
   const { signIn } = useAuth();
+  const history = useHistory();
+  const location = useLocation();
+
+  const handleLogIn = () => {
+    console.log(111, location);
+    signIn();
+    history.push('/');
+  };
+
   return (
     <div>
-      <button onClick={signIn}>Sign In</button>
+      <button onClick={handleLogIn}>Sign In</button>
       <form
         onSubmit={(event) => {
           event.preventDefault();
