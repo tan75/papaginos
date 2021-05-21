@@ -1,27 +1,19 @@
 import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useAuth } from '../access/AuthContext';
 
 const SignInPage = () => {
   const { signIn } = useAuth();
   const history = useHistory();
-  const location = useLocation();
 
   const handleLogIn = () => {
-    console.log(111, location);
     signIn();
     history.push('/');
   };
 
   return (
     <div>
-      <button onClick={handleLogIn}>Sign In</button>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          console.log('Signing in...');
-        }}
-      >
+      <form onSubmit={handleLogIn}>
         <p>Please enter your credentials to sign in</p>
         <label htmlFor="userEmail">Your email</label>
         <br />
@@ -31,7 +23,7 @@ const SignInPage = () => {
         <br />
         <input type="password" />
         <br />
-        {/* <button type="submit">Sign In</button> */}
+        <button type="submit">Sign In</button>
       </form>
     </div>
   );
