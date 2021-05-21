@@ -7,34 +7,14 @@ import OrderPage from './order/OrderPage';
 import ReceiptPage from './order/ReceiptPage';
 import OrdersPage from './order/OrdersPage';
 import PrivateRoute from './access/PrivateRoute';
+import Navigation from './misc/Navigation';
 
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 const App = () => {
   return (
     <div className="App">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Artem Pizza</Link>
-          </li>
-          <li>
-            <Link to="/signin">Sign In</Link>
-          </li>
-          <li>
-            <Link to="/signup">Sign Up</Link>
-          </li>
-          <li>
-            <Link to="/order">Order</Link>
-          </li>
-          <li>
-            <Link to="/orders">Orders</Link>
-          </li>
-          <li>
-            <Link to="/receipt">Receipt</Link>
-          </li>
-        </ul>
-      </nav>
+      <Navigation />
       <h1>Artem Pizza</h1>
       <Switch>
         <PrivateRoute path="/receipt" redirectPath="/signin">
