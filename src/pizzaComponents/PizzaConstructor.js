@@ -1,5 +1,5 @@
 import React, { useState, useReducer } from 'react';
-import { reducer } from '../PizzaReducer';
+import { reducer } from '../state/PizzaReducer';
 import { calcTotalPrice } from '../utils/calcTotalPrice';
 import PizzaComponents from './PizzaComponents';
 
