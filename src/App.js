@@ -2,7 +2,7 @@ import React from 'react';
 import PizzaConstructor from './pizzaComponents/PizzaConstructor';
 import SignInPage from './access/SignInPage';
 import SignUpPage from './access/SignUpPage';
-import ErrorPage from './misc/ErrorPage';
+import ErrorPage from './ErrorPage';
 import OrderPage from './order/OrderPage';
 import ReceiptPage from './order/ReceiptPage';
 import OrdersPage from './order/OrdersPage';
