@@ -1,8 +1,7 @@
 import React from 'react';
 import { render, getByLabelText, fireEvent } from '@testing-library/react';
 import PizzaConstructor from './PizzaConstructor';
-import { reducer } from '../reducer/reducer';
-import { statements } from '@babel/template';
+import { reducer } from '../state/reducer';
 
 describe('PizzaConstructor', () => {
   it('renders correctly', () => {

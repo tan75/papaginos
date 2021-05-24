@@ -1,8 +1,8 @@
 import React, { useState, useReducer } from 'react';
-import { reducer } from '../reducer/reducer';
+import { reducer } from '../state/reducer';
 import { calcTotalPrice } from '../utils/calcTotalPrice';
 import PizzaComponents from './PizzaComponents';
-import { addExtra, removeExtra, selectBaseOptions } from '../reducer/actions';
+import { addExtra, removeExtra, selectBaseOptions } from '../state/actions';
 
 const initialOrderState = {
   size: '30',
