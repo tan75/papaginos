@@ -6,159 +6,155 @@ import { statements } from '@babel/template';
 
 describe('PizzaConstructor', () => {
   it('renders correctly', () => {
-    const { container, getByLabelText } = render(<PizzaConstructor />);
-    expect(container).toContainHTML('Size 30');
-    expect(container).toContainHTML('Size 35');
-    expect(container).toContainHTML('Thin');
-    expect(getByLabelText('Thin base')).toBeChecked();
-    expect(container).toContainHTML('Thick');
-    expect(container).toContainHTML('Tomato sauce');
-    expect(getByLabelText('Tomato sauce')).toBeChecked();
-    expect(container).toContainHTML('white');
-    expect(container).toContainHTML('Hot sauce');
-    expect(container).toContainHTML('Mozarella');
-    expect(container).toContainHTML('Cheddar');
-    expect(container).toContainHTML('Dor blue');
-    expect(getByLabelText('Tomato')).toContainHTML('tomato');
-    expect(container).toContainHTML('Mushroom');
-    expect(container).toContainHTML('Pepper');
-    expect(container).toContainHTML('Bacon');
-    expect(container).toContainHTML('Pepperoni');
-    expect(container).toContainHTML('Ham');
+    const { container, getByDisplayValue } = render(<PizzaConstructor />);
+    expect(container).toContainHTML('30');
+    expect(container).toContainHTML('35');
+    expect(container).toContainHTML('thin');
+    expect(getByDisplayValue('thin')).toBeChecked();
+    expect(container).toContainHTML('thick');
+    expect(container).toContainHTML('tomato sauce');
+    expect(getByDisplayValue('tomato sauce')).toBeChecked();
+    expect(container).toContainHTML('white sauce');
+    expect(container).toContainHTML('hot sauce');
+    expect(container).toContainHTML('mozarella');
+    expect(container).toContainHTML('cheddar');
+    expect(container).toContainHTML('dor blue');
+    expect(getByDisplayValue('tomato')).toContainHTML('tomato');
+    expect(container).toContainHTML('mushroom');
+    expect(container).toContainHTML('pepper');
+    expect(container).toContainHTML('bacon');
+    expect(container).toContainHTML('pepperoni');
+    expect(container).toContainHTML('ham');
     expect(container).toContainHTML('Total: 200');
   });
 
   describe('on pizza size change', () => {
     it('updates pizza size radio button state', () => {
-      const { getByLabelText } = render(<PizzaConstructor />);
-      expect(getByLabelText('Size 30')).toBeChecked();
+      const { getByDisplayValue } = render(<PizzaConstructor />);
+      expect(getByDisplayValue('30')).toBeChecked();
 
-      fireEvent.click(getByLabelText('Size 35'));
-      expect(getByLabelText('Size 30')).not.toBeChecked();
-      expect(getByLabelText('Size 35')).toBeChecked();
+      fireEvent.click(getByDisplayValue('35'));
+      expect(getByDisplayValue('30')).not.toBeChecked();
+      expect(getByDisplayValue('35')).toBeChecked();
     });
+
     it('updates price correctly', () => {
-      const { container, getByLabelText } = render(<PizzaConstructor />);
-      fireEvent.click(getByLabelText('Size 35'));
+      const { container, getByDisplayValue } = render(<PizzaConstructor />);
+      fireEvent.click(getByDisplayValue('35'));
       expect(container).toContainHTML('Total: 250');
     });
   });
 
   describe('on pizza base change', () => {
     it('updates pizza base radio button state', () => {
-      const { getByLabelText } = render(<PizzaConstructor />);
-      expect(getByLabelText('Thin base')).toBeChecked();
-
-      fireEvent.click(getByLabelText('Thick base'));
-      expect(getByLabelText('Thin base')).not.toBeChecked();
-      expect(getByLabelText('Thick base')).toBeChecked();
+      const { getByDisplayValue } = render(<PizzaConstructor />);
+      expect(getByDisplayValue('thin')).toBeChecked();
+      fireEvent.click(getByDisplayValue('thick'));
+      expect(getByDisplayValue('thin')).not.toBeChecked();
+      expect(getByDisplayValue('thick')).toBeChecked();
     });
-    it('it does not change the price', () => {
-      const { container, getByLabelText } = render(<PizzaConstructor />);
 
-      fireEvent.click(getByLabelText('Thick base'));
+    fit('it does not change the price', () => {
+      const { container, getByDisplayValue } = render(<PizzaConstructor />);
+      fireEvent.click(getByDisplayValue('thick'));
       expect(container).toContainHTML('Total: 200');
     });
   });
 
   describe('on pizza sauce change', () => {
     it('updates pizza sauce radio button state', () => {
-      const { getByLabelText } = render(<PizzaConstructor />);
-      expect(getByLabelText('Tomato sauce')).toBeChecked();
-
-      fireEvent.click(getByLabelText('White sauce'));
-      expect(getByLabelText('Tomato sauce')).not.toBeChecked();
-      expect(getByLabelText('Hot sauce')).not.toBeChecked();
-      expect(getByLabelText('White sauce')).toBeChecked();
-
-      fireEvent.click(getByLabelText('Hot sauce'));
-      expect(getByLabelText('White sauce')).not.toBeChecked();
-      expect(getByLabelText('Tomato sauce')).not.toBeChecked();
-
-      expect(getByLabelText('Hot sauce')).toBeChecked();
+      const { getByDisplayValue } = render(<PizzaConstructor />);
+      expect(getByDisplayValue('tomato sauce')).toBeChecked();
+      fireEvent.click(getByDisplayValue('white sauce'));
+      expect(getByDisplayValue('tomato sauce')).not.toBeChecked();
+      expect(getByDisplayValue('hot sauce')).not.toBeChecked();
+      expect(getByDisplayValue('white sauce')).toBeChecked();
+      fireEvent.click(getByDisplayValue('hot sauce'));
+      expect(getByDisplayValue('white sauce')).not.toBeChecked();
+      expect(getByDisplayValue('tomato sauce')).not.toBeChecked();
+      expect(getByDisplayValue('hot sauce')).toBeChecked();
     });
-    it('does not change the price', () => {
-      const { container, getByLabelText } = render(<PizzaConstructor />);
 
-      fireEvent.click(getByLabelText('White sauce'));
+    it('does not change the price', () => {
+      const { container, getByDisplayValue } = render(<PizzaConstructor />);
+
+      fireEvent.click(getByDisplayValue('white sauce'));
       expect(container).toContainHTML('Total: 200');
     });
   });
 
   describe('on pizza cheese change', () => {
     it('updates pizza cheese checkboxes state', () => {
-      const { getByLabelText } = render(<PizzaConstructor />);
-      expect(getByLabelText('Mozarella')).not.toBeChecked();
-      expect(getByLabelText('Cheddar')).not.toBeChecked();
-      expect(getByLabelText('Dor blue')).not.toBeChecked();
-
-      fireEvent.click(getByLabelText('Mozarella'));
-      fireEvent.click(getByLabelText('Cheddar'));
-      expect(getByLabelText('Mozarella')).toBeChecked();
-      expect(getByLabelText('Cheddar')).toBeChecked();
-      expect(getByLabelText('Dor blue')).not.toBeChecked();
+      const { getByDisplayValue } = render(<PizzaConstructor />);
+      expect(getByDisplayValue('mozarella')).not.toBeChecked();
+      expect(getByDisplayValue('cheddar')).not.toBeChecked();
+      expect(getByDisplayValue('dor blue')).not.toBeChecked();
+      fireEvent.click(getByDisplayValue('mozarella'));
+      fireEvent.click(getByDisplayValue('cheddar'));
+      expect(getByDisplayValue('mozarella')).toBeChecked();
+      expect(getByDisplayValue('cheddar')).toBeChecked();
+      expect(getByDisplayValue('dor blue')).not.toBeChecked();
     });
 
     it('updates price correctly', () => {
-      const { container, getByLabelText } = render(<PizzaConstructor />);
+      const { container, getByDisplayValue } = render(<PizzaConstructor />);
 
-      fireEvent.click(getByLabelText('Mozarella'));
-      fireEvent.click(getByLabelText('Cheddar'));
+      fireEvent.click(getByDisplayValue('mozarella'));
+      fireEvent.click(getByDisplayValue('cheddar'));
       expect(container).toContainHTML('Total: 258');
     });
   });
 
   describe('on pizza veg change', () => {
     it('updates pizza veg checkboxes state', () => {
-      const { getByLabelText } = render(<PizzaConstructor />);
-      expect(getByLabelText('Tomato')).not.toBeChecked();
-      expect(getByLabelText('Mushroom')).not.toBeChecked();
-      expect(getByLabelText('Pepper')).not.toBeChecked();
+      const { getByDisplayValue } = render(<PizzaConstructor />);
+      expect(getByDisplayValue('tomato')).not.toBeChecked();
+      expect(getByDisplayValue('mushroom')).not.toBeChecked();
+      expect(getByDisplayValue('pepper')).not.toBeChecked();
 
-      fireEvent.click(getByLabelText('Tomato'));
-      fireEvent.click(getByLabelText('Mushroom'));
-      expect(getByLabelText('Tomato')).toBeChecked();
-      expect(getByLabelText('Mushroom')).toBeChecked();
-      expect(getByLabelText('Pepper')).not.toBeChecked();
+      fireEvent.click(getByDisplayValue('tomato'));
+      fireEvent.click(getByDisplayValue('mushroom'));
+      expect(getByDisplayValue('tomato')).toBeChecked();
+      expect(getByDisplayValue('mushroom')).toBeChecked();
+      expect(getByDisplayValue('pepper')).not.toBeChecked();
     });
-    it('updates price correctly', () => {
-      const { container, getByLabelText } = render(<PizzaConstructor />);
 
-      fireEvent.click(getByLabelText('Tomato'));
-      fireEvent.click(getByLabelText('Mushroom'));
+    it('updates price correctly', () => {
+      const { container, getByDisplayValue } = render(<PizzaConstructor />);
+      fireEvent.click(getByDisplayValue('tomato'));
+      fireEvent.click(getByDisplayValue('mushroom'));
       expect(container).toContainHTML('Total: 258');
     });
   });
 
   describe('on pizza meat change', () => {
     it('updates pizza meat checkboxes state', () => {
-      const { getByLabelText } = render(<PizzaConstructor />);
-      expect(getByLabelText('Bacon')).not.toBeChecked();
-      expect(getByLabelText('Pepperoni')).not.toBeChecked();
-      expect(getByLabelText('Ham')).not.toBeChecked();
-
-      fireEvent.click(getByLabelText('Bacon'));
-      fireEvent.click(getByLabelText('Pepperoni'));
-      expect(getByLabelText('Bacon')).toBeChecked();
-      expect(getByLabelText('Pepperoni')).toBeChecked();
-      expect(getByLabelText('Ham')).not.toBeChecked();
+      const { getByDisplayValue } = render(<PizzaConstructor />);
+      expect(getByDisplayValue('bacon')).not.toBeChecked();
+      expect(getByDisplayValue('pepperoni')).not.toBeChecked();
+      expect(getByDisplayValue('ham')).not.toBeChecked();
+      fireEvent.click(getByDisplayValue('bacon'));
+      fireEvent.click(getByDisplayValue('pepperoni'));
+      expect(getByDisplayValue('bacon')).toBeChecked();
+      expect(getByDisplayValue('pepperoni')).toBeChecked();
+      expect(getByDisplayValue('ham')).not.toBeChecked();
     });
-    it('updates price correctly', () => {
-      const { container, getByLabelText } = render(<PizzaConstructor />);
 
-      fireEvent.click(getByLabelText('Bacon'));
-      fireEvent.click(getByLabelText('Pepperoni'));
+    it('updates price correctly', () => {
+      const { container, getByDisplayValue } = render(<PizzaConstructor />);
+      fireEvent.click(getByDisplayValue('bacon'));
+      fireEvent.click(getByDisplayValue('pepperoni'));
       expect(container).toContainHTML('Total: 258');
     });
   });
 
   describe('on submit', () => {
     it('renders the selected ingredients list', () => {
-      const { container, getByLabelText, getByRole } = render(
+      const { container, getByDisplayValue, getByRole } = render(
         <PizzaConstructor />
       );
-      fireEvent.click(getByLabelText('Bacon'));
-      fireEvent.click(getByLabelText('Pepperoni'));
+      fireEvent.click(getByDisplayValue('bacon'));
+      fireEvent.click(getByDisplayValue('pepperoni'));
       fireEvent.click(getByRole('button'));
       expect(container).toContainHTML('30, thin, tomato, bacon, pepperoni');
     });

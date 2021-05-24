@@ -1,195 +1,117 @@
 import React from 'react';
-import PizzaComponent from './PizzaComponent';
+import ExtraComponent from './ExtraComponent';
+import BaseComponent from './BaseComponent';
 
 const PizzaComponents = ({ state, handleChange }) => {
   return (
     <>
       <fieldset>
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="size30"
-          id="size30"
-          type="radio"
+        <BaseComponent
           name="size"
           value="30"
-          checked={state?.size === '30'}
-          onChange={(e) => handleChange(e)}
-          labelName="Size 30"
+          checked={state?.size?.includes('30')}
+          onChange={handleChange}
         />
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="size35"
-          id="size35"
-          type="radio"
+        <BaseComponent
           name="size"
           value="35"
-          checked={state?.size === '35'}
-          onChange={(e) => handleChange(e)}
-          labelName="Size 35"
+          checked={state?.size?.includes('35')}
+          onChange={handleChange}
         />
       </fieldset>
       <fieldset>
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="baseThin"
-          id="baseThin"
-          type="radio"
+        <BaseComponent
           name="base"
           value="thin"
-          checked={state?.base === 'thin'}
-          onChange={(e) => handleChange(e)}
-          labelName="Thin base"
+          checked={state?.base?.includes('thin')}
+          onChange={handleChange}
         />
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="baseThick"
-          id="baseThick"
-          type="radio"
+        <BaseComponent
           name="base"
           value="thick"
-          checked={state?.base === 'thick'}
-          onChange={(e) => handleChange(e)}
-          labelName="Thick base"
+          checked={state?.base?.includes('thick')}
+          onChange={handleChange}
         />
       </fieldset>
       <fieldset>
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="sauceTomato"
-          id="sauceTomato"
-          type="radio"
+        <BaseComponent
           name="sauce"
-          value="tomato"
-          checked={state?.sauce === 'tomato'}
-          onChange={(e) => handleChange(e)}
-          labelName="Tomato sauce"
+          value="tomato sauce"
+          checked={state?.sauce?.includes('tomato sauce')}
+          onChange={handleChange}
         />
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="sauceWhite"
-          id="sauceWhite"
-          type="radio"
+
+        <BaseComponent
           name="sauce"
-          value="white"
-          checked={state?.sauce === 'white'}
-          onChange={(e) => handleChange(e)}
-          labelName="White sauce"
+          value="white sauce"
+          checked={state?.sauce?.includes('white sauce')}
+          onChange={handleChange}
         />
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="sauceHot"
-          id="sauceHot"
-          type="radio"
+        <BaseComponent
           name="sauce"
-          value="hot"
-          checked={state?.sauce === 'hot'}
-          onChange={(e) => handleChange(e)}
-          labelName="Hot sauce"
+          value="hot sauce"
+          checked={state?.sauce?.includes('hot sauce')}
+          onChange={handleChange}
         />
       </fieldset>
       <fieldset>
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="cheeseMozarella"
-          id="cheeseMozarella"
-          type="checkbox"
+        <ExtraComponent
           name="cheese"
           value="mozarella"
           checked={state?.cheese?.includes('mozarella')}
-          onChange={(e) => handleChange(e)}
-          labelName="Mozarella"
+          onChange={handleChange}
         />
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="cheeseCheddar"
-          id="cheeseCheddar"
-          type="checkbox"
+        <ExtraComponent
           name="cheese"
           value="cheddar"
           checked={state?.cheese?.includes('cheddar')}
-          onChange={(e) => handleChange(e)}
-          labelName="Cheddar"
+          onChange={handleChange}
         />
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="cheeseDorBlue"
-          id="cheeseDorBlue"
-          type="checkbox"
+        <ExtraComponent
           name="cheese"
           value="dor blue"
           checked={state?.cheese?.includes('dor blue')}
-          onChange={(e) => handleChange(e)}
-          labelName="Dor blue"
+          onChange={handleChange}
         />
       </fieldset>
       <fieldset>
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="vegTomato"
-          id="vegTomato"
-          type="checkbox"
+        <ExtraComponent
           name="veg"
           value="tomato"
           checked={state?.veg?.includes('tomato')}
-          onChange={(e) => handleChange(e)}
-          labelName="Tomato"
+          onChange={handleChange}
         />
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="vegMushroom"
-          id="vegMushroom"
-          type="checkbox"
+        <ExtraComponent
           name="veg"
           value="mushroom"
           checked={state?.veg?.includes('mushroom')}
-          onChange={(e) => handleChange(e)}
-          labelName="Mushroom"
+          onChange={handleChange}
         />
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="vegPepper"
-          id="vegPepper"
-          type="checkbox"
+        <ExtraComponent
           name="veg"
           value="pepper"
           checked={state?.veg?.includes('pepper')}
-          onChange={(e) => handleChange(e)}
-          labelName="Pepper"
+          onChange={handleChange}
         />
       </fieldset>
       <fieldset>
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="meatBacon"
-          id="meatBacon"
-          type="checkbox"
+        <ExtraComponent
           name="meat"
           value="bacon"
           checked={state?.meat?.includes('bacon')}
-          onChange={(e) => handleChange(e)}
-          labelName="Bacon"
+          onChange={handleChange}
         />
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="meatHam"
-          id="meatHam"
-          type="checkbox"
+        <ExtraComponent
           name="meat"
           value="ham"
           checked={state?.meat?.includes('ham')}
-          onChange={(e) => handleChange(e)}
-          labelName="Ham"
+          onChange={handleChange}
         />
-        <PizzaComponent
-          handleChange={handleChange}
-          htmlFor="meatPepperoni"
-          id="meatPepperoni"
-          type="checkbox"
+        <ExtraComponent
           name="meat"
           value="pepperoni"
           checked={state?.meat?.includes('pepperoni')}
-          onChange={(e) => handleChange(e)}
-          labelName="Pepperoni"
+          onChange={handleChange}
         />
       </fieldset>
     </>
