@@ -1,7 +1,8 @@
 import React, { useState, useReducer } from 'react';
-import { reducer } from '../PizzaReducer';
+import { reducer } from '../reducer/reducer';
 import { calcTotalPrice } from '../utils/calcTotalPrice';
 import PizzaComponents from './PizzaComponents';
+import { addExtra, removeExtra, selectBaseOptions } from '../reducer/actions';
 
 const initialOrderState = {
   size: '30',
@@ -26,11 +27,19 @@ const PizzaConstructor = () => {
   }
 
   const handleChange = (e) => {
-    dispatch({
+    const data = {
       name: e.target.name,
       value: e.target.value,
-      isChecked: e.target.checked,
-    });
+    };
+
+    const isExtra = Array.isArray(state[e.target.name]);
+
+    if (isExtra) {
+      e.target.checked ? addExtra(data, dispatch) : removeExtra(data, dispatch);
+      return;
+    }
+
+    selectBaseOptions(data, dispatch);
   };
 
   return (

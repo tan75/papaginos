@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, getByLabelText, fireEvent } from '@testing-library/react';
 import PizzaConstructor from './PizzaConstructor';
-import { reducer } from '../PizzaReducer';
+import { reducer } from '../reducer/reducer';
 import { statements } from '@babel/template';
 
 describe('PizzaConstructor', () => {
@@ -169,9 +169,11 @@ describe('PizzaConstructor', () => {
       const newState = reducer(
         {},
         {
-          name: 'size',
-          value: '30',
-          isChecked: true,
+          type: 'SET_BASE_PIZZA',
+          payload: {
+            name: 'size',
+            value: '30',
+          },
         }
       );
       expect(newState.size).toBe('30');
@@ -181,9 +183,11 @@ describe('PizzaConstructor', () => {
       const newState = reducer(
         {},
         {
-          name: 'size',
-          value: '35',
-          isChecked: true,
+          type: 'SET_BASE_PIZZA',
+          payload: {
+            name: 'size',
+            value: '35',
+          },
         }
       );
       expect(newState.size).toBe('35');
@@ -193,9 +197,11 @@ describe('PizzaConstructor', () => {
       const newState = reducer(
         {},
         {
-          name: 'base',
-          value: 'thin',
-          isChecked: true,
+          type: 'SET_BASE_PIZZA',
+          payload: {
+            name: 'base',
+            value: 'thin',
+          },
         }
       );
       expect(newState.base).toBe('thin');
@@ -205,9 +211,11 @@ describe('PizzaConstructor', () => {
       const newState = reducer(
         {},
         {
-          name: 'base',
-          value: 'thick',
-          isChecked: true,
+          type: 'SET_BASE_PIZZA',
+          payload: {
+            name: 'base',
+            value: 'thick',
+          },
         }
       );
       expect(newState.base).toBe('thick');
@@ -217,9 +225,11 @@ describe('PizzaConstructor', () => {
       const newState = reducer(
         {},
         {
-          name: 'sauce',
-          value: 'tomato',
-          isChecked: true,
+          type: 'SET_BASE_PIZZA',
+          payload: {
+            name: 'sauce',
+            value: 'tomato',
+          },
         }
       );
       expect(newState.sauce).toBe('tomato');
@@ -236,9 +246,11 @@ describe('PizzaConstructor', () => {
           meat: [],
         },
         {
-          name: 'cheese',
-          value: 'mozarella',
-          isChecked: true,
+          type: 'ADD_EXTRA',
+          payload: {
+            name: 'cheese',
+            value: 'mozarella',
+          },
         }
       );
       expect(newState.cheese).toStrictEqual(['dor blue', 'mozarella']);
@@ -255,9 +267,11 @@ describe('PizzaConstructor', () => {
           meat: [],
         },
         {
-          name: 'veg',
-          value: 'pepper',
-          isChecked: true,
+          type: 'ADD_EXTRA',
+          payload: {
+            name: 'veg',
+            value: 'pepper',
+          },
         }
       );
       expect(newState.veg).toStrictEqual(['tomato', 'mushroom', 'pepper']);
@@ -274,9 +288,11 @@ describe('PizzaConstructor', () => {
           meat: ['bacon'],
         },
         {
-          name: 'meat',
-          value: 'pepperoni',
-          isChecked: true,
+          type: 'ADD_EXTRA',
+          payload: {
+            name: 'meat',
+            value: 'pepperoni',
+          },
         }
       );
       expect(newState.meat).toStrictEqual(['bacon', 'pepperoni']);

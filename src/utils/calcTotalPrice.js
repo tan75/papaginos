@@ -12,6 +12,7 @@ export const calcTotalPrice = (ord) => {
   const extrPrice =
     (ord.cheese.length + ord.veg.length + ord.meat.length) *
     priceList.extrasPrice;
+
   totPrice = totPrice + extrPrice;
   return totPrice;
 };
