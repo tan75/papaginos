@@ -3,15 +3,7 @@ import { reducer } from '../state/reducer';
 import { calcTotalPrice } from '../utils/calcTotalPrice';
 import Components from './Components';
 import { addExtra, removeExtra, selectBaseOptions } from '../state/actions';
-
-const initialOrderState = {
-  size: '30',
-  base: 'thin',
-  sauce: 'tomato sauce',
-  cheese: [],
-  veg: [],
-  meat: [],
-};
+import { initialOrderState } from '../state/initialOrderState';
 
 const PizzaConstructor = () => {
   const [state, dispatch] = useReducer(reducer, initialOrderState);

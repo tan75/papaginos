@@ -2,7 +2,7 @@ import React from 'react';
 import ExtraComponent from './ExtraComponent';
 import BaseComponent from './BaseComponent';
 
-const PizzaComponents = ({ state, handleChange }) => {
+const Components = ({ state, handleChange }) => {
   return (
     <>
       <fieldset>
@@ -118,4 +118,4 @@ const PizzaComponents = ({ state, handleChange }) => {
   );
 };
 
-export default PizzaComponents;
+export default Components;

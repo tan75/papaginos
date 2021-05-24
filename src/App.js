@@ -1,5 +1,5 @@
 import React from 'react';
-import PizzaConstructor from './pizzaComponents/PizzaConstructor';
+import PizzaConstructor from './pizza/PizzaConstructor';
 import SignInPage from './access/SignInPage';
 import SignUpPage from './access/SignUpPage';
 import Page404 from './404Page';
@@ -44,6 +44,7 @@ const App = () => {
           <OrderPage />
         </PrivateRoute>
         <PrivateRoute path="/orders" redirectPath="/signin">
+          {/* TODO fetch order by id*/}
           <OrdersPage />
         </PrivateRoute>
         <Route path="/signin">
