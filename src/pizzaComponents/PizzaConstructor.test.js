@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, getByLabelText, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import PizzaConstructor from './PizzaConstructor';
 import { reducer } from '../state/reducer';
 

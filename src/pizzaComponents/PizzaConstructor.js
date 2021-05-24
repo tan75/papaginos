@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from 'react';
 import { reducer } from '../state/reducer';
 import { calcTotalPrice } from '../utils/calcTotalPrice';
-import PizzaComponents from './PizzaComponents';
+import Components from './Components';
 import { addExtra, removeExtra, selectBaseOptions } from '../state/actions';
 
 const initialOrderState = {
@@ -45,7 +45,7 @@ const PizzaConstructor = () => {
   return (
     <div className="App">
       <form data-testid="pizza-form" onSubmit={showOrder}>
-        <PizzaComponents state={state} handleChange={handleChange} />
+        <Components state={state} handleChange={handleChange} />
         <div>
           <p>Your Order</p>
           <p>{orderList.join(', ')}</p>
