@@ -1,10 +1,15 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import ReceiptPage from './ReceiptPage';
+import { AuthProvider } from '../access/AuthContext';
 
 describe('Receipt Page', () => {
-  it.skip('renders correctly', () => {
-    const { container } = render(<ReceiptPage />);
+  it('renders correctly', () => {
+    const { container } = render(
+      <AuthProvider>
+        <ReceiptPage />
+      </AuthProvider>
+    );
     expect(container).toContainHTML('Your Receipt');
   });
 });

@@ -1,10 +1,15 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import OrderPage from './OrderPage';
+import { AuthProvider } from '../access/AuthContext';
 
 describe('order page', () => {
-  it.skip('renders correctly', () => {
-    const { container } = render(<OrderPage />);
+  it('renders correctly', () => {
+    const { container } = render(
+      <AuthProvider>
+        <OrderPage />
+      </AuthProvider>
+    );
     expect(container).toContainHTML('Your Order');
   });
 });
