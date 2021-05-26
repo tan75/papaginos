@@ -1,18 +1,18 @@
 import React from 'react';
-import ExtraComponent from './ExtraComponent';
-import BaseComponent from './BaseComponent';
+import Checkbox from './Checkbox';
+import RadioButton from './RadioButton';
 
-const Components = ({ state, handleChange }) => {
+const IngredientsLayout = ({ state, handleChange }) => {
   return (
     <>
       <fieldset>
-        <BaseComponent
+        <RadioButton
           name="size"
           value="30"
           checked={state?.size?.includes('30')}
           onChange={handleChange}
         />
-        <BaseComponent
+        <RadioButton
           name="size"
           value="35"
           checked={state?.size?.includes('35')}
@@ -20,13 +20,13 @@ const Components = ({ state, handleChange }) => {
         />
       </fieldset>
       <fieldset>
-        <BaseComponent
+        <RadioButton
           name="base"
           value="thin"
           checked={state?.base?.includes('thin')}
           onChange={handleChange}
         />
-        <BaseComponent
+        <RadioButton
           name="base"
           value="thick"
           checked={state?.base?.includes('thick')}
@@ -34,20 +34,20 @@ const Components = ({ state, handleChange }) => {
         />
       </fieldset>
       <fieldset>
-        <BaseComponent
+        <RadioButton
           name="sauce"
           value="tomato sauce"
           checked={state?.sauce?.includes('tomato sauce')}
           onChange={handleChange}
         />
 
-        <BaseComponent
+        <RadioButton
           name="sauce"
           value="white sauce"
           checked={state?.sauce?.includes('white sauce')}
           onChange={handleChange}
         />
-        <BaseComponent
+        <RadioButton
           name="sauce"
           value="hot sauce"
           checked={state?.sauce?.includes('hot sauce')}
@@ -55,19 +55,19 @@ const Components = ({ state, handleChange }) => {
         />
       </fieldset>
       <fieldset>
-        <ExtraComponent
+        <Checkbox
           name="cheese"
           value="mozarella"
           checked={state?.cheese?.includes('mozarella')}
           onChange={handleChange}
         />
-        <ExtraComponent
+        <Checkbox
           name="cheese"
           value="cheddar"
           checked={state?.cheese?.includes('cheddar')}
           onChange={handleChange}
         />
-        <ExtraComponent
+        <Checkbox
           name="cheese"
           value="dor blue"
           checked={state?.cheese?.includes('dor blue')}
@@ -75,19 +75,19 @@ const Components = ({ state, handleChange }) => {
         />
       </fieldset>
       <fieldset>
-        <ExtraComponent
+        <Checkbox
           name="veg"
           value="tomato"
           checked={state?.veg?.includes('tomato')}
           onChange={handleChange}
         />
-        <ExtraComponent
+        <Checkbox
           name="veg"
           value="mushroom"
           checked={state?.veg?.includes('mushroom')}
           onChange={handleChange}
         />
-        <ExtraComponent
+        <Checkbox
           name="veg"
           value="pepper"
           checked={state?.veg?.includes('pepper')}
@@ -95,19 +95,19 @@ const Components = ({ state, handleChange }) => {
         />
       </fieldset>
       <fieldset>
-        <ExtraComponent
+        <Checkbox
           name="meat"
           value="bacon"
           checked={state?.meat?.includes('bacon')}
           onChange={handleChange}
         />
-        <ExtraComponent
+        <Checkbox
           name="meat"
           value="ham"
           checked={state?.meat?.includes('ham')}
           onChange={handleChange}
         />
-        <ExtraComponent
+        <Checkbox
           name="meat"
           value="pepperoni"
           checked={state?.meat?.includes('pepperoni')}
@@ -118,4 +118,4 @@ const Components = ({ state, handleChange }) => {
   );
 };
 
-export default Components;
+export default IngredientsLayout;

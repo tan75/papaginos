@@ -1,5 +1,5 @@
 import React from 'react';
-import PizzaConstructor from './pizza/PizzaConstructor';
+import PizzaConstructor from './components/PizzaConstructor';
 import SignInPage from './access/SignInPage';
 import SignUpPage from './access/SignUpPage';
 import Page404 from './404Page';

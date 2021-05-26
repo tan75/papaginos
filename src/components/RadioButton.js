@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 
-const BaseComponent = forwardRef(({ name, value, ...restProps }, ref) => {
+const RadioButton = forwardRef(({ name, value, ...restProps }, ref) => {
   return (
     <label className="margin">
       <input ref={ref} type="radio" name={name} value={value} {...restProps} />
@@ -9,6 +9,6 @@ const BaseComponent = forwardRef(({ name, value, ...restProps }, ref) => {
   );
 });
 
-BaseComponent.displayName = 'BaseComponent';
+RadioButton.displayName = 'RadioButton';
 
-export default BaseComponent;
+export default RadioButton;

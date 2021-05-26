@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../access/AuthContext';
+import { useAuth } from '../pages/AuthContext';
 
 const OrderPage = () => {
   const { signOut } = useAuth();

@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import SignUpPage from './SignUpPage';
+import SignUp from './SignUp';
 
 describe('Sign Up Page', () => {
   it('renders correctly', () => {
-    const { container } = render(<SignUpPage />);
+    const { container } = render(<SignUp />);
     expect(container).toContainHTML('Please register with Artem Pizza');
   });
 });

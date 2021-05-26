@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import OrderPage from './OrderPage';
-import { AuthProvider } from '../access/AuthContext';
+import { AuthProvider } from '../pages/AuthContext';
 
 describe('order page', () => {
   it('renders correctly', () => {
