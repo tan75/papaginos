@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
-import { AuthProvider } from './access/AuthContext';
+import { AuthProvider } from './pages/AuthContext';
 
 Sentry.init({
   dsn: 'https://1d6c46ab9e1647f9a970888a5ef25235@o635742.ingest.sentry.io/5755850',
