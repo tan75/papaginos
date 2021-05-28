@@ -3,7 +3,7 @@ import { createContext, useContext, useReducer } from 'react';
 import { initialOrderState } from './state/initialOrderState';
 import { reducer } from './state/reducer';
 
-const PizzaContext = createContext();
+export const PizzaContext = createContext();
 
 export const PizzaProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialOrderState);
