@@ -1,13 +1,13 @@
-import React, { useState, useReducer } from 'react';
-import { reducer } from '../state/reducer';
+import React, { useState } from 'react';
+// import { reducer } from '../state/reducer';
 import { calcTotalPrice } from '../utils/calcTotalPrice';
 import IngredientsLayout from './IngredientsLayout';
 import { addExtra, removeExtra, selectBaseOptions } from '../state/actions';
-import { initialOrderState } from '../state/initialOrderState';
+// import { initialOrderState } from '../state/initialOrderState';
 import Button from './Button';
 
-const PizzaConstructor = () => {
-  const [state, dispatch] = useReducer(reducer, initialOrderState);
+const PizzaConstructor = ({ state, dispatch }) => {
+  //const [state, dispatch] = useReducer(reducer, initialOrderState);
   const [orderList, setOrderList] = useState([]);
 
   // Total Order Price

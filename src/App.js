@@ -7,10 +7,12 @@ import OrderPage from './order/OrderPage';
 import ReceiptPage from './order/ReceiptPage';
 import OrdersPage from './order/OrdersPage';
 import PrivateRoute from './pages/PrivateRoute';
-
 import { Switch, Route, Link } from 'react-router-dom';
+import { usePizza } from './AppContext';
 
 const App = () => {
+  const { state, dispatch } = usePizza();
+
   return (
     <div className="App">
       <nav>
@@ -54,7 +56,7 @@ const App = () => {
           <SignUpPage />
         </Route>
         <Route exact path="/">
-          <PizzaConstructor />
+          <PizzaConstructor state={state} dispatch={dispatch} />
         </Route>
         <Route>
           <Page404 />
