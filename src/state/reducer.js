@@ -1,15 +1,15 @@
 export const reducer = (state, { type, payload }) => {
   switch (type) {
-    case 'SET_BASE_PIZZA':
+    case 'SELECT_BASE_INGREDIENDS':
       return { ...state, [payload.name]: payload.value };
 
-    case 'ADD_EXTRA':
+    case 'ADD_EXTRA_INGREDIEND':
       return {
         ...state,
         [payload.name]: [...state[payload.name], payload.value],
       };
 
-    case 'REMOVE_EXTRA':
+    case 'REMOVE_EXTRA_INGREDIEND':
       return {
         ...state,
         [payload.name]: state[payload.name].filter(

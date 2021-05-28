@@ -25,9 +25,9 @@ const PizzaConstructor = () => {
       value: e.target.value,
     };
 
-    const isExtra = Array.isArray(state[e.target.name]);
+    const isExtraIngredient = Array.isArray(state[e.target.name]);
 
-    if (isExtra) {
+    if (isExtraIngredient) {
       e.target.checked ? addExtra(data, dispatch) : removeExtra(data, dispatch);
       return;
     }
