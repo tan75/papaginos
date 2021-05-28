@@ -2,6 +2,8 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import PizzaConstructor from './PizzaConstructor';
 import { reducer } from '../state/reducer';
+import { PizzaProvider } from '../AppContext';
+import { App } from '../App';
 
 describe('PizzaConstructor', () => {
   it('renders correctly', () => {
@@ -54,7 +56,14 @@ describe('PizzaConstructor', () => {
     });
 
     fit('it does not change the price', () => {
-      const { container, getByDisplayValue } = render(<PizzaConstructor />);
+      const { container, getByDisplayValue } = render(
+        <PizzaProvider>
+          <App>
+            <PizzaConstructor />
+          </App>
+        </PizzaProvider>
+      );
+      console.log(1111, container);
       fireEvent.click(getByDisplayValue('thick'));
       expect(container).toContainHTML('Total: 200');
     });

@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import { AuthProvider } from './pages/AuthContext';
+import { PizzaProvider } from './AppContext';
 
 Sentry.init({
   dsn: 'https://1d6c46ab9e1647f9a970888a5ef25235@o635742.ingest.sentry.io/5755850',
@@ -17,11 +18,13 @@ Sentry.init({
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </AuthProvider>
+    <PizzaProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthProvider>
+    </PizzaProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
