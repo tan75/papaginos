@@ -2,10 +2,11 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import PizzaConstructor from './PizzaConstructor';
 import { reducer } from '../state/reducer';
-import { PizzaProvider, PizzaContext } from '../AppContext';
+import { PizzaProvider } from '../AppContext';
+import { App } from '../App';
 
 describe('PizzaConstructor', () => {
-  it.skip('renders correctly', () => {
+  it('renders correctly', () => {
     const { container, getByDisplayValue } = render(<PizzaConstructor />);
     expect(container).toContainHTML('30');
     expect(container).toContainHTML('35');
@@ -14,7 +15,7 @@ describe('PizzaConstructor', () => {
     expect(container).toContainHTML('thick');
     expect(container).toContainHTML('tomato sauce');
     expect(getByDisplayValue('tomato sauce')).toBeChecked();
-    expect(container).toContainHTML('whit.skipe sauce');
+    expect(container).toContainHTML('white sauce');
     expect(container).toContainHTML('hot sauce');
     expect(container).toContainHTML('mozarella');
     expect(container).toContainHTML('cheddar');
@@ -29,7 +30,7 @@ describe('PizzaConstructor', () => {
   });
 
   describe('on pizza size change', () => {
-    it.skip('updates pizza size radio button state', () => {
+    it('updates pizza size radio button state', () => {
       const { getByDisplayValue } = render(<PizzaConstructor />);
       expect(getByDisplayValue('30')).toBeChecked();
 
@@ -38,7 +39,7 @@ describe('PizzaConstructor', () => {
       expect(getByDisplayValue('35')).toBeChecked();
     });
 
-    it.skip('updates price correctly', () => {
+    it('updates price correctly', () => {
       const { container, getByDisplayValue } = render(<PizzaConstructor />);
       fireEvent.click(getByDisplayValue('35'));
       expect(container).toContainHTML('Total: 250');
@@ -46,7 +47,7 @@ describe('PizzaConstructor', () => {
   });
 
   describe('on pizza base change', () => {
-    it.skip('updates pizza base radio button state', () => {
+    it('updates pizza base radio button state', () => {
       const { getByDisplayValue } = render(<PizzaConstructor />);
       expect(getByDisplayValue('thin')).toBeChecked();
       fireEvent.click(getByDisplayValue('thick'));
@@ -54,13 +55,12 @@ describe('PizzaConstructor', () => {
       expect(getByDisplayValue('thick')).toBeChecked();
     });
 
-    it.skip('it.skip does not change the price', () => {
+    fit('it does not change the price', () => {
       const { container, getByDisplayValue } = render(
         <PizzaProvider>
-          <PizzaContext.Consumer>
-            {(value) => <>{value.state.base}</>}
-            {/* <PizzaConstructor /> */}
-          </PizzaContext.Consumer>
+          <App>
+            <PizzaConstructor />
+          </App>
         </PizzaProvider>
       );
       console.log(1111, container);
@@ -70,29 +70,29 @@ describe('PizzaConstructor', () => {
   });
 
   describe('on pizza sauce change', () => {
-    it.skip('updates pizza sauce radio button state', () => {
+    it('updates pizza sauce radio button state', () => {
       const { getByDisplayValue } = render(<PizzaConstructor />);
       expect(getByDisplayValue('tomato sauce')).toBeChecked();
-      fireEvent.click(getByDisplayValue('whit.skipe sauce'));
+      fireEvent.click(getByDisplayValue('white sauce'));
       expect(getByDisplayValue('tomato sauce')).not.toBeChecked();
       expect(getByDisplayValue('hot sauce')).not.toBeChecked();
-      expect(getByDisplayValue('whit.skipe sauce')).toBeChecked();
+      expect(getByDisplayValue('white sauce')).toBeChecked();
       fireEvent.click(getByDisplayValue('hot sauce'));
-      expect(getByDisplayValue('whit.skipe sauce')).not.toBeChecked();
+      expect(getByDisplayValue('white sauce')).not.toBeChecked();
       expect(getByDisplayValue('tomato sauce')).not.toBeChecked();
       expect(getByDisplayValue('hot sauce')).toBeChecked();
     });
 
-    it.skip('does not change the price', () => {
+    it('does not change the price', () => {
       const { container, getByDisplayValue } = render(<PizzaConstructor />);
 
-      fireEvent.click(getByDisplayValue('whit.skipe sauce'));
+      fireEvent.click(getByDisplayValue('white sauce'));
       expect(container).toContainHTML('Total: 200');
     });
   });
 
   describe('on pizza cheese change', () => {
-    it.skip('updates pizza cheese checkboxes state', () => {
+    it('updates pizza cheese checkboxes state', () => {
       const { getByDisplayValue } = render(<PizzaConstructor />);
       expect(getByDisplayValue('mozarella')).not.toBeChecked();
       expect(getByDisplayValue('cheddar')).not.toBeChecked();
@@ -104,7 +104,7 @@ describe('PizzaConstructor', () => {
       expect(getByDisplayValue('dor blue')).not.toBeChecked();
     });
 
-    it.skip('updates price correctly', () => {
+    it('updates price correctly', () => {
       const { container, getByDisplayValue } = render(<PizzaConstructor />);
 
       fireEvent.click(getByDisplayValue('mozarella'));
@@ -114,7 +114,7 @@ describe('PizzaConstructor', () => {
   });
 
   describe('on pizza veg change', () => {
-    it.skip('updates pizza veg checkboxes state', () => {
+    it('updates pizza veg checkboxes state', () => {
       const { getByDisplayValue } = render(<PizzaConstructor />);
       expect(getByDisplayValue('tomato')).not.toBeChecked();
       expect(getByDisplayValue('mushroom')).not.toBeChecked();
@@ -127,7 +127,7 @@ describe('PizzaConstructor', () => {
       expect(getByDisplayValue('pepper')).not.toBeChecked();
     });
 
-    it.skip('updates price correctly', () => {
+    it('updates price correctly', () => {
       const { container, getByDisplayValue } = render(<PizzaConstructor />);
       fireEvent.click(getByDisplayValue('tomato'));
       fireEvent.click(getByDisplayValue('mushroom'));
@@ -136,7 +136,7 @@ describe('PizzaConstructor', () => {
   });
 
   describe('on pizza meat change', () => {
-    it.skip('updates pizza meat checkboxes state', () => {
+    it('updates pizza meat checkboxes state', () => {
       const { getByDisplayValue } = render(<PizzaConstructor />);
       expect(getByDisplayValue('bacon')).not.toBeChecked();
       expect(getByDisplayValue('pepperoni')).not.toBeChecked();
@@ -148,7 +148,7 @@ describe('PizzaConstructor', () => {
       expect(getByDisplayValue('ham')).not.toBeChecked();
     });
 
-    it.skip('updates price correctly', () => {
+    it('updates price correctly', () => {
       const { container, getByDisplayValue } = render(<PizzaConstructor />);
       fireEvent.click(getByDisplayValue('bacon'));
       fireEvent.click(getByDisplayValue('pepperoni'));
@@ -156,8 +156,8 @@ describe('PizzaConstructor', () => {
     });
   });
 
-  describe('on submit.skip', () => {
-    it.skip('renders the selected ingredients list', () => {
+  describe('on submit', () => {
+    it('renders the selected ingredients list', () => {
       const { container, getByDisplayValue, getByRole } = render(
         <PizzaConstructor />
       );
@@ -169,7 +169,7 @@ describe('PizzaConstructor', () => {
   });
 
   describe('test reducers', () => {
-    it.skip('updates pizza size correctly', () => {
+    it('updates pizza size correctly', () => {
       const newState = reducer(
         {},
         {
@@ -183,7 +183,7 @@ describe('PizzaConstructor', () => {
       expect(newState.size).toBe('30');
     });
 
-    it.skip('updates pizza size correctly', () => {
+    it('updates pizza size correctly', () => {
       const newState = reducer(
         {},
         {
@@ -197,7 +197,7 @@ describe('PizzaConstructor', () => {
       expect(newState.size).toBe('35');
     });
 
-    it.skip('updates pizza base correctly', () => {
+    it('updates pizza base correctly', () => {
       const newState = reducer(
         {},
         {
@@ -211,7 +211,7 @@ describe('PizzaConstructor', () => {
       expect(newState.base).toBe('thin');
     });
 
-    it.skip('updates pizza base correctly', () => {
+    it('updates pizza base correctly', () => {
       const newState = reducer(
         {},
         {
@@ -225,7 +225,7 @@ describe('PizzaConstructor', () => {
       expect(newState.base).toBe('thick');
     });
 
-    it.skip('updates pizza sauce correctly', () => {
+    it('updates pizza sauce correctly', () => {
       const newState = reducer(
         {},
         {
@@ -239,7 +239,7 @@ describe('PizzaConstructor', () => {
       expect(newState.sauce).toBe('tomato');
     });
 
-    it.skip('updates pizza cheese selection correctly', () => {
+    it('updates pizza cheese selection correctly', () => {
       const newState = reducer(
         {
           size: 30,
@@ -260,7 +260,7 @@ describe('PizzaConstructor', () => {
       expect(newState.cheese).toStrictEqual(['dor blue', 'mozarella']);
     });
 
-    it.skip('updates pizza veg selection correctly', () => {
+    it('updates pizza veg selection correctly', () => {
       const newState = reducer(
         {
           size: 30,
@@ -281,7 +281,7 @@ describe('PizzaConstructor', () => {
       expect(newState.veg).toStrictEqual(['tomato', 'mushroom', 'pepper']);
     });
 
-    it.skip('updates pizza meat selection correctly', () => {
+    it('updates pizza meat selection correctly', () => {
       const newState = reducer(
         {
           size: 30,
