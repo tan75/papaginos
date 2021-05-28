@@ -4,6 +4,7 @@ import { calcTotalPrice } from '../utils/calcTotalPrice';
 import IngredientsLayout from './IngredientsLayout';
 import { addExtra, removeExtra, selectBaseOptions } from '../state/actions';
 import { initialOrderState } from '../state/initialOrderState';
+import Button from './Button';
 
 const PizzaConstructor = () => {
   const [state, dispatch] = useReducer(reducer, initialOrderState);
@@ -43,7 +44,7 @@ const PizzaConstructor = () => {
           <p>{orderList.join(', ')}</p>
           <p>Total: {totalPrice}</p>
         </div>
-        <button type="submit">Order Now!</button>
+        <Button />
       </form>
     </div>
   );

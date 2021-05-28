@@ -1,12 +1,12 @@
 import React from 'react';
 import PizzaConstructor from './components/PizzaConstructor';
-import SignInPage from './access/SignInPage';
-import SignUpPage from './access/SignUpPage';
+import SignInPage from './pages/SignIn';
+import SignUpPage from './pages/SignUp';
 import Page404 from './404Page';
 import OrderPage from './order/OrderPage';
 import ReceiptPage from './order/ReceiptPage';
 import OrdersPage from './order/OrdersPage';
-import PrivateRoute from './access/PrivateRoute';
+import PrivateRoute from './pages/PrivateRoute';
 
 import { Switch, Route, Link } from 'react-router-dom';
 

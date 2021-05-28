@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../components/Button';
 
 const signUp = () => {
   return (
@@ -21,7 +22,7 @@ const signUp = () => {
       <br />
       <input type="text" />
       <br />
-      <button type="submit">Sign Up</button>
+      <Button />
     </form>
   );
 };

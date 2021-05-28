@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../pages/AuthContext';
+import Button from '../components/Button';
 
 const OrderPage = () => {
   const { signOut } = useAuth();
@@ -30,7 +31,7 @@ const OrderPage = () => {
         <br />
         <input type="number" />
         <br />
-        <button type="submit">Make payment</button>
+        <Button />
       </form>
     </div>
   );
