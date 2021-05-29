@@ -5,8 +5,21 @@ import { reducer } from '../state/reducer';
 import { PizzaProvider, PizzaContext } from '../AppContext';
 
 describe('PizzaConstructor', () => {
-  it.skip('renders correctly', () => {
-    const { container, getByDisplayValue } = render(<PizzaConstructor />);
+  it.only('renders correctly', () => {
+    const { container, getByDisplayValue } = render(
+      <PizzaProvider>
+        <PizzaContext.Consumer>
+          {(value) => (
+            <>
+              {console.log(999, value.dispatch)}
+              <PizzaConstructor value={(value.state, value.dispatch)} />
+            </>
+          )}
+        </PizzaContext.Consumer>
+      </PizzaProvider>
+    );
+
+    console.log(1010, container);
     expect(container).toContainHTML('30');
     expect(container).toContainHTML('35');
     expect(container).toContainHTML('thin');
