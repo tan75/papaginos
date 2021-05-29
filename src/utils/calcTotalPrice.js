@@ -9,8 +9,6 @@ export const calcTotalPrice = (ord) => {
   ord.size === '35' && (totPrice += priceList.largeSizeInc);
 
   // Price for extras
-  console.log(777, order);
-
   const extrPrice =
     (ord.cheese.length + ord.veg.length + ord.meat.length) *
     priceList.extrasPrice;
