@@ -3,11 +3,9 @@ import React, { useState } from 'react';
 import { calcTotalPrice } from '../utils/calcTotalPrice';
 import IngredientsLayout from './IngredientsLayout';
 import { addExtra, removeExtra, selectBaseOptions } from '../state/actions';
-// import { initialOrderState } from '../state/initialOrderState';
 import Button from './Button';
 
 const PizzaConstructor = ({ state, dispatch }) => {
-  //const [state, dispatch] = useReducer(reducer, initialOrderState);
   const [orderList, setOrderList] = useState([]);
 
   // Total Order Price
