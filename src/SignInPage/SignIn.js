@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from '../AuthContext';
 import { useHistory } from 'react-router-dom';
 
 const SignInPage = () => {

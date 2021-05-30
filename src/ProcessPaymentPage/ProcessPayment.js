@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useAuth } from './AuthContext';
-import Button from '../components/Button';
+import { useAuth } from '../AuthContext';
+import Button from '../components/Button/Button';
 
 const ProcessPayment = () => {
   const { signOut } = useAuth();

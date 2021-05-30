@@ -1,6 +1,6 @@
 import React from 'react';
-import Checkbox from './Checkbox';
-import RadioButton from './RadioButton';
+import Checkbox from '../Checkbox/Checkbox';
+import RadioButton from '../RadioButton/RadioButton';
 
 const IngredientsLayout = ({ state, handleChange }) => {
   return (

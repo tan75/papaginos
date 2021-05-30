@@ -1,14 +1,14 @@
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import PizzaConstructor from './PizzaConstructor';
-import SignInPage from './pages/SignIn';
-import SignUpPage from './pages/SignUp';
-import Page404 from './pages/404Page';
-import ReceiptPage from './order/ReceiptPage';
-import OrdersPage from './order/OrdersPage';
-import PrivateRoute from './pages/PrivateRoute';
+import PizzaConstructor from './PizzaConstructorPage/PizzaConstructor';
+import SignInPage from './SignInPage/SignIn';
+import SignUpPage from './SignUpPage/SignUp';
+import Page404 from './404Page/404Page';
+import ReceiptPage from './ReceiptPage/ReceiptPage';
+import OrdersPage from './OrdersPage/OrdersPage';
+import PrivateRoute from './PrivateRoute';
 import { usePizza } from './AppContext';
-import ProcessPayment from './pages/ProcessPayment';
+import ProcessPayment from './ProcessPaymentPage/ProcessPayment';
 
 const App = () => {
   const { state, dispatch } = usePizza();

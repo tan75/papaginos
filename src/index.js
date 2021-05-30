@@ -6,7 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
-import { AuthProvider } from './pages/AuthContext';
+import { AuthProvider } from './AuthContext';
 import { PizzaProvider } from './AppContext';
 
 Sentry.init({

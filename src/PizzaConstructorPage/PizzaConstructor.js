@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { calcTotalPrice } from './utils/calcTotalPrice';
-import IngredientsLayout from './components/IngredientsLayout';
-import { addExtra, removeExtra, selectBaseOptions } from './state/actions';
-import Button from './components/Button';
+import { calcTotalPrice } from '../utils/calcTotalPrice';
+import IngredientsLayout from '../components/IngredientsLayout/IngredientsLayout';
+import { addExtra, removeExtra, selectBaseOptions } from '../state/actions';
+import Button from '../components/Button/Button';
 
 const PizzaConstructor = ({ state, dispatch }) => {
   const [orderList, setOrderList] = useState([]);

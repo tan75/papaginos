@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import PizzaConstructor from './PizzaConstructor';
-import { reducer } from './state/reducer';
-import { PizzaProvider, PizzaContext } from './AppContext';
+import { reducer } from '../state/reducer';
+import { PizzaProvider, PizzaContext } from '../AppContext';
 
 describe('PizzaConstructor', () => {
   describe('on pizza size change', () => {

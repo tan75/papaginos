@@ -1,15 +1,15 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import ReceiptPage from './ReceiptPage';
-import { AuthProvider } from '../pages/AuthContext';
+import OrdersPage from './OrdersPage';
+import { AuthProvider } from '../AuthContext';
 
-describe('Receipt Page', () => {
+describe('Orders Page', () => {
   it('renders correctly', () => {
     const { container } = render(
       <AuthProvider>
-        <ReceiptPage />
+        <OrdersPage />
       </AuthProvider>
     );
-    expect(container).toContainHTML('Your Receipt');
+    expect(container).toContainHTML('Your Orders');
   });
 });

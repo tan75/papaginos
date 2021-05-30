@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import IngredientsLayout from './IngredientsLayout';
-import { initialOrderState } from '../state/initialOrderState';
+import { initialOrderState } from '../../state/initialOrderState';
 
 describe('IngredientsLayout', () => {
   it.only('renders correctly', () => {
