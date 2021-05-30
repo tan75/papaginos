@@ -4,11 +4,11 @@ import PizzaConstructor from './PizzaConstructor';
 import SignInPage from './pages/SignIn';
 import SignUpPage from './pages/SignUp';
 import Page404 from './pages/404Page';
-import OrderPage from './order/OrderPage';
 import ReceiptPage from './order/ReceiptPage';
 import OrdersPage from './order/OrdersPage';
 import PrivateRoute from './pages/PrivateRoute';
 import { usePizza } from './AppContext';
+import ProcessPayment from './pages/ProcessPayment';
 
 const App = () => {
   const { state, dispatch } = usePizza();
@@ -27,13 +27,13 @@ const App = () => {
             <Link to="/signup">Sign Up</Link>
           </li>
           <li>
-            <Link to="/order">Order</Link>
-          </li>
-          <li>
             <Link to="/orders">Orders</Link>
           </li>
           <li>
             <Link to="/receipt">Receipt</Link>
+          </li>
+          <li>
+            <Link to="/processPayment">PP</Link>
           </li>
         </ul>
       </nav>
@@ -42,8 +42,8 @@ const App = () => {
         <PrivateRoute path="/receipt" redirectPath="/signin">
           <ReceiptPage />
         </PrivateRoute>
-        <PrivateRoute path="/order" redirectPath="/signin">
-          <OrderPage />
+        <PrivateRoute path="/processPayment" redirectPath="/signin">
+          <ProcessPayment />
         </PrivateRoute>
         <PrivateRoute path="/orders" redirectPath="/signin">
           {/* TODO fetch order by id*/}
