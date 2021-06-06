@@ -1,7 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../AuthContext';
-import Button from '../components/Button/Button';
 
 const ProcessPayment = () => {
   const { signOut } = useAuth();
@@ -10,7 +9,7 @@ const ProcessPayment = () => {
   console.log(register);
 
   const onSubmit = (data) => {
-    console.log('Your order is being placed...', data);
+    alert('Your order is being placed...', data);
   };
 
   return (
@@ -45,7 +44,7 @@ const ProcessPayment = () => {
           <label> CVV</label>
           <input {...register('cvv')} />
         </div>
-        <Button />
+        <button>Make Payment</button>
       </form>
     </div>
   );
