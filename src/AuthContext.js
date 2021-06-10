@@ -4,7 +4,8 @@ import { createContext, useContext, useState } from 'react';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [authed, setAuthed] = useState(false);
+  // TODO set useState(false) to require auth
+  const [authed, setAuthed] = useState(true);
   const signIn = () => {
     setAuthed(true);
   };
