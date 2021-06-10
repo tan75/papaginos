@@ -4,6 +4,7 @@ import PizzaConstructor from './PizzaConstructor';
 import { reducer } from '../state/reducer';
 import { PizzaProvider, PizzaContext } from '../AppContext';
 
+// TODO
 describe('PizzaConstructor', () => {
   describe('on pizza size change', () => {
     it.skip('updates pizza size radio button state', () => {

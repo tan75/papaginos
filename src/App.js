@@ -15,6 +15,7 @@ const App = () => {
 
   return (
     <div className="App">
+      {/* TODO to move navigation out into a component */}
       <nav>
         <ul>
           <li>
@@ -33,6 +34,7 @@ const App = () => {
             <Link to="/receipt">Receipt</Link>
           </li>
           <li>
+            {/* TODO to delete this once Process Payment is done */}
             <Link to="/processPayment">PP</Link>
           </li>
         </ul>
