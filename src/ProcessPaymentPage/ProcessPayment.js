@@ -33,24 +33,72 @@ const ProcessPayment = () => {
         <div>
           <label> Cardholder Name </label>
           <input
-            {...register('cardholderName', { required: true, minLength: 1 })}
+            {...register('cardholderName', {
+              required: {
+                message: 'The cardholder name is required',
+                value: true,
+              },
+              pattern: {
+                message: 'Only letters are allowed',
+                value: /^[A-Za-z]+$/i,
+              },
+              minLength: { message: 'Cardholder Name is too short', value: 1 },
+              maxLength: { message: 'Cardholder Name is too long', value: 21 },
+            })}
             placeholder="Name Surname"
           />
           {errors?.cardholderName && (
-            <div>The Cardholer Name field is required</div>
+            <div>{errors?.cardholderName.message}</div>
           )}
         </div>
         <div>
           <label> Card Number </label>
-          <input {...register('cardNumber')} placeholder="Card number" />
+          <input
+            {...register('cardNumber', {
+              required: {
+                message: 'The card number is required',
+                value: true,
+              },
+              minLength: {
+                message: 'Should be 19 digits',
+                value: 16,
+              },
+              maxLength: {
+                message: 'Should be 19 digits',
+                value: 16,
+              },
+            })}
+            placeholder="Card number"
+          />
+          {errors?.cardNumber && <div>The Cardnumber field is required</div>}
         </div>
         <div>
           <label> Expiry Date</label>
-          <input {...register('expiryDate')} placeholder="Expiry date" />
+          <input
+            {...register('expiryDate', {
+              required: {
+                message: 'The expiry date is required',
+                value: true,
+              },
+            })}
+            placeholder="Expiry date"
+          />
+          {errors?.expiryDate && <div>The Expiry Date field is required</div>}
         </div>
         <div>
           <label> CVV</label>
-          <input {...register('cvv')} placeholder="CVV" />
+          <input
+            {...register('cvv', {
+              required: {
+                message: 'The CVV field is required',
+                value: true,
+              },
+              minLength: 3,
+              maxLength: 3,
+            })}
+            placeholder="CVV"
+          />
+          {errors?.cvv && <div>The CVV field is required</div>}
         </div>
         <button>Make Payment</button>
       </form>
