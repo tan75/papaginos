@@ -4,6 +4,16 @@ import { useAuth } from '../AuthContext';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+const normalizeCardNumber = (value) => {
+  return (
+    value
+      .replace(/\s/g, '')
+      .match(/.{1,4}/g)
+      ?.join(' ')
+      .substr(0, 19) || ''
+  );
+};
+
 const schema = yup.object().shape({
   // TODO cardType validation
   cardholderName: yup.string().required('Cardholder name is required'),
@@ -19,6 +29,8 @@ const ProcessPayment = () => {
     register,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
+
+  const cardNumber = register('cardNumber');
 
   const onSubmit = (data) => {
     console.log('Your order is being placed...', data);
@@ -44,11 +56,17 @@ const ProcessPayment = () => {
           <label> Cardholder Name </label>
           <input {...register('cardholderName')} placeholder="Name Surname" />
           <p>{errors.cardholderName?.message}</p>
-          {/* {console.log(errors)} */}
         </div>
         <div>
           <label> Card Number </label>
-          <input {...register('cardNumber')} placeholder="Card number" />
+          <input
+            {...register('cardNumber')}
+            placeholder="0000 0000 0000 0000"
+            onChange={(event) => {
+              cardNumber.onChange(event);
+              event.target.value = normalizeCardNumber(event.target.value);
+            }}
+          />
           <p>{errors.cardNumber?.message}</p>
         </div>
         <div>
