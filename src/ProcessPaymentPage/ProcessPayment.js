@@ -22,7 +22,7 @@ const schema = yup.object().shape({
   cvv: yup.number().required('CVV is required'),
 });
 
-const ProcessPayment = () => {
+const ProcessPayment = ({ formSubmit }) => {
   const { signOut } = useAuth();
   const {
     handleSubmit,
@@ -33,6 +33,7 @@ const ProcessPayment = () => {
   const cardNumber = register('cardNumber');
 
   const onSubmit = (data) => {
+    formSubmit();
     console.log('Your order is being placed...', data);
   };
 
@@ -58,8 +59,9 @@ const ProcessPayment = () => {
           <p>{errors.cardholderName?.message}</p>
         </div>
         <div>
-          <label> Card Number </label>
+          <label htmlFor="cardNumber">Card Number</label>
           <input
+            id="cardNumber"
             {...register('cardNumber')}
             placeholder="0000 0000 0000 0000"
             onChange={(event) => {
@@ -70,16 +72,16 @@ const ProcessPayment = () => {
           <p>{errors.cardNumber?.message}</p>
         </div>
         <div>
-          <label> Expiry Date</label>
+          <label>Expiry Date</label>
           <input {...register('expiryDate')} placeholder="Expiry date" />
           <p>{errors.expiryDate?.message}</p>
         </div>
         <div>
-          <label> CVV</label>
-          <input {...register('cvv')} placeholder="CVV" />
+          <label htmlFor="cvv">CVV</label>
+          <input {...register('cvv')} placeholder="CVV" id="cvv" />
           <p>{errors.cvv?.message}</p>
         </div>
-        <button>Make Payment</button>
+        <button>Make payment</button>
       </form>
     </div>
   );
