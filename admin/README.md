@@ -26,3 +26,8 @@ Launches the test runner in the interactive watch mode.\
 [API ingredients for Pizza](https://papaginos-server.herokuapp.com/v1/api-docs/)
 [API admin auth](https://papaginos-server.herokuapp.com/v2/api-docs/)
 [Ingredients](https://papaginos-server.herokuapp.com/ingredients)
+
+#### TODO
+
+1. Admin - add ingredients
+2. Fix Sentry messages

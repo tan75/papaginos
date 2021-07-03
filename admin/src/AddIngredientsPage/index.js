@@ -21,7 +21,7 @@ export default function AddIngredientsPage() {
     console.log(222, formData);
 
     const res = await fetch(
-      'https://papaginos-server.herokuapp.com/v1/ingredients',
+      'https://papaginos-server.herokuapp.com/v2/ingredients',
       {
         method: 'POST',
         body: formData,
