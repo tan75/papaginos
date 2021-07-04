@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Checkbox from '../Checkbox/Checkbox';
 import RadioButton from '../RadioButton/RadioButton';
 
 const IngredientsLayout = ({ state, handleChange }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const loadData = async () => {
+      const json = await fetch(
+        'https://papaginos-server.herokuapp.com/v1/ingredients'
+      ).then((res) => res.json());
+
+      setData(json);
+      setIsLoading(false);
+    };
+    loadData();
+  }, []);
+
+  if (isLoading) {
+    return <>Loading...</>;
+  }
+
   return (
     <>
       <fieldset>
