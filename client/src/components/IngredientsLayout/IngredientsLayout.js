@@ -4,7 +4,7 @@ import RadioButton from '../RadioButton/RadioButton';
 
 const IngredientsLayout = ({ state, handleChange }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState();
+  const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -12,7 +12,7 @@ const IngredientsLayout = ({ state, handleChange }) => {
         'https://papaginos-server.herokuapp.com/v1/ingredients'
       ).then((res) => res.json());
 
-      setData(json);
+      setIngredients(json);
       setIsLoading(false);
     };
     loadData();
@@ -73,65 +73,47 @@ const IngredientsLayout = ({ state, handleChange }) => {
           onChange={handleChange}
         />
       </fieldset>
+
       <fieldset>
-        <Checkbox
-          name="cheese"
-          value="mozarella"
-          checked={state?.cheese?.includes('mozarella')}
-          onChange={handleChange}
-        />
-        <Checkbox
-          name="cheese"
-          value="cheddar"
-          checked={state?.cheese?.includes('cheddar')}
-          onChange={handleChange}
-        />
-        <Checkbox
-          name="cheese"
-          value="dor blue"
-          checked={state?.cheese?.includes('dor blue')}
-          onChange={handleChange}
-        />
+        {ingredients.map((ingredient) => {
+          if (ingredient.category === 'cheese') {
+            return (
+              <Checkbox
+                name={ingredient.category}
+                value={ingredient.name}
+                checked={state?.cheese?.includes(ingredient.name)}
+              />
+            );
+          }
+        })}
       </fieldset>
+
       <fieldset>
-        <Checkbox
-          name="veg"
-          value="tomato"
-          checked={state?.veg?.includes('tomato')}
-          onChange={handleChange}
-        />
-        <Checkbox
-          name="veg"
-          value="mushroom"
-          checked={state?.veg?.includes('mushroom')}
-          onChange={handleChange}
-        />
-        <Checkbox
-          name="veg"
-          value="pepper"
-          checked={state?.veg?.includes('pepper')}
-          onChange={handleChange}
-        />
+        {ingredients.map((ingredient) => {
+          if (ingredient.category === 'vegetables') {
+            return (
+              <Checkbox
+                name={ingredient.category}
+                value={ingredient.name}
+                checked={state?.veg?.includes(ingredient.name)}
+              />
+            );
+          }
+        })}
       </fieldset>
+
       <fieldset>
-        <Checkbox
-          name="meat"
-          value="bacon"
-          checked={state?.meat?.includes('bacon')}
-          onChange={handleChange}
-        />
-        <Checkbox
-          name="meat"
-          value="ham"
-          checked={state?.meat?.includes('ham')}
-          onChange={handleChange}
-        />
-        <Checkbox
-          name="meat"
-          value="pepperoni"
-          checked={state?.meat?.includes('pepperoni')}
-          onChange={handleChange}
-        />
+        {ingredients.map((ingredient) => {
+          if (ingredient.category === 'meat') {
+            return (
+              <Checkbox
+                name={ingredient.category}
+                value={ingredient.name}
+                checked={state?.meat?.includes(ingredient.name)}
+              />
+            );
+          }
+        })}
       </fieldset>
     </>
   );
