@@ -73,26 +73,21 @@ const IngredientsLayout = ({ state, handleChange }) => {
           onChange={handleChange}
         />
       </fieldset>
+
       <fieldset>
-        <Checkbox
-          name="cheese"
-          value="mozarella"
-          checked={state?.cheese?.includes('mozarella')}
-          onChange={handleChange}
-        />
-        <Checkbox
-          name="cheese"
-          value="cheddar"
-          checked={state?.cheese?.includes('cheddar')}
-          onChange={handleChange}
-        />
-        <Checkbox
-          name="cheese"
-          value="dor blue"
-          checked={state?.cheese?.includes('dor blue')}
-          onChange={handleChange}
-        />
+        {data.map((item) => {
+          if (item.category === 'cheese') {
+            return (
+              <Checkbox
+                name={item.category}
+                value={item.name}
+                checked={state?.cheese?.includes(item.name)}
+              />
+            );
+          }
+        })}
       </fieldset>
+
       <fieldset>
         <Checkbox
           name="veg"
