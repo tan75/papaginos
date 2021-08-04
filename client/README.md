@@ -1,5 +1,16 @@
-# Artem Pizza Restaurant App
+# Pagaginos client app
 
-Welcome!
+This app is for Papaginos client usage
 
-[Papaginoe Server on Heroku](https://papaginos-server.herokuapp.com/v1/api-docs/)
+## Available Scripts
+
+In the project directory, you can run:
+
+### `yarn start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.\
